@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using rocognitionofhumanbyretina.common;
 
 namespace rocognitionofhumanbyretina
 {
@@ -14,6 +15,13 @@ namespace rocognitionofhumanbyretina
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void openButton_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+            }
         }
     }
 }
