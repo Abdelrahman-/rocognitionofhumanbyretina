@@ -6,22 +6,31 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using rocognitionofhumanbyretina.common;
+using rocognitionofhumanbyretina.DB;
 
 namespace rocognitionofhumanbyretina
 {
     public partial class Form1 : Form
     {
+        private Connector dbConnector;
+
         public Form1()
         {
             InitializeComponent();
+            dbConnector = new Connector();
         }
 
         private void openButton_Click(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+
             }
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

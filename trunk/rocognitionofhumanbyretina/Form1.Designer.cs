@@ -48,16 +48,17 @@
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(506, 352);
+            this.closeButton.Location = new System.Drawing.Point(332, 236);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 23);
             this.closeButton.TabIndex = 1;
             this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // openButton
             // 
-            this.openButton.Location = new System.Drawing.Point(506, 211);
+            this.openButton.Location = new System.Drawing.Point(323, 41);
             this.openButton.Name = "openButton";
             this.openButton.Size = new System.Drawing.Size(75, 23);
             this.openButton.TabIndex = 2;
@@ -67,7 +68,7 @@
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(506, 272);
+            this.startButton.Location = new System.Drawing.Point(323, 96);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(75, 23);
             this.startButton.TabIndex = 3;
@@ -83,7 +84,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(593, 387);
+            this.ClientSize = new System.Drawing.Size(430, 286);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.openButton);
             this.Controls.Add(this.closeButton);
