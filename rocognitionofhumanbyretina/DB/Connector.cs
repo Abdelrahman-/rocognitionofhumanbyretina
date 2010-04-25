@@ -16,7 +16,10 @@ namespace rocognitionofhumanbyretina.DB
         
         public void init()
         {
-            SqlConnection con = new SqlConnection("Data Source=.\\SQLEXPRESS;AttachDbFilename=D:\\Учеба\\ПиОИ\\kurswork\\rocognitionofhumanbyretina\\rocognitionofhumanbyretina\\Database1.mdf;Integrated Security=True;User Instance=True");
+            SqlConnection con = new SqlConnection("Data Source=.\\SQLEXPRESS;"+
+                "AttachDbFilename=|DataDirectory|\\Database1.mdf;" +
+                "Integrated Security=True;"+
+                "User Instance=True");
             con.Open();
             sqlCommand.CommandText = "SELECT * FROM test";
             sqlCommand.Connection = con;
