@@ -32,5 +32,11 @@ namespace rocognitionofhumanbyretina
         {
             Application.Exit();
         }
+
+        private void startButton_Click(object sender, EventArgs e)
+        {
+            Connector con = new Connector();
+            con.init();
+        }
     }
 }
