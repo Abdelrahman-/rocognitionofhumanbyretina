@@ -43,6 +43,7 @@
             this.database1DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.testTableAdapter = new rocognitionofhumanbyretina.Database1DataSetTableAdapters.testTableAdapter();
             this.tableAdapterManager = new rocognitionofhumanbyretina.Database1DataSetTableAdapters.TableAdapterManager();
+            this.addButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
@@ -144,11 +145,22 @@
             this.tableAdapterManager.testTableAdapter = this.testTableAdapter;
             this.tableAdapterManager.UpdateOrder = rocognitionofhumanbyretina.Database1DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // addButton
+            // 
+            this.addButton.Location = new System.Drawing.Point(575, 383);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(75, 23);
+            this.addButton.TabIndex = 3;
+            this.addButton.Text = "Add";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
             // DbForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(770, 415);
+            this.Controls.Add(this.addButton);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.closeButton);
             this.Name = "DbForm";
@@ -178,5 +190,6 @@
         private System.Windows.Forms.DataGridViewImageColumn figureDeployedCorneaDataGridViewImageColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tokenOneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tokenTwoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button addButton;
     }
 }

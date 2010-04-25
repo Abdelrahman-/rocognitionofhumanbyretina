@@ -11,6 +11,8 @@ namespace rocognitionofhumanbyretina
 {
     public partial class DbForm : Form
     {
+        private AddForm addForm = null;
+
         public DbForm()
         {
             InitializeComponent();
@@ -26,6 +28,12 @@ namespace rocognitionofhumanbyretina
             // TODO: This line of code loads data into the 'database1DataSet.test' table. You can move, or remove it, as needed.
             this.testTableAdapter.Fill(this.database1DataSet.test);
 
+        }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            addForm = new AddForm();
+            addForm.Show();
         }
     }
 }
