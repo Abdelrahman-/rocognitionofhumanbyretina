@@ -10,15 +10,17 @@ using rocognitionofhumanbyretina.DB;
 
 namespace rocognitionofhumanbyretina
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
+        private DbForm dbForm = new DbForm();
+
         private Connector dbConnector;
 
         public static bool clicked = false;
         public static Point startPoint;
         public static Point finishPoint;
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             dbConnector = new Connector();
@@ -87,6 +89,12 @@ namespace rocognitionofhumanbyretina
             {
                 graph.DrawRectangle(new Pen(Color.Red), finishPoint.X, finishPoint.Y, startPoint.X - finishPoint.X, startPoint.Y - finishPoint.Y);
             }
+        }
+
+        private void dbButton_Click(object sender, EventArgs e)
+        {
+            
+            dbForm.Show();
         }
     }
 }

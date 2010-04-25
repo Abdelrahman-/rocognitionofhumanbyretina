@@ -1,6 +1,6 @@
 ﻿namespace rocognitionofhumanbyretina
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,6 +33,7 @@
             this.openButton = new System.Windows.Forms.Button();
             this.startButton = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.dbButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,16 +86,27 @@
             this.openFileDialog.DefaultExt = "bmp";
             this.openFileDialog.Filter = "All files|*.*|Bitmap|*.bmp";
             // 
-            // Form1
+            // dbButton
+            // 
+            this.dbButton.Location = new System.Drawing.Point(335, 164);
+            this.dbButton.Name = "dbButton";
+            this.dbButton.Size = new System.Drawing.Size(75, 23);
+            this.dbButton.TabIndex = 4;
+            this.dbButton.Text = "DB info";
+            this.dbButton.UseVisualStyleBackColor = true;
+            this.dbButton.Click += new System.EventHandler(this.dbButton_Click);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(430, 286);
+            this.ClientSize = new System.Drawing.Size(430, 284);
+            this.Controls.Add(this.dbButton);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.openButton);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.pictureBoxMain);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).EndInit();
             this.ResumeLayout(false);
@@ -108,6 +120,7 @@
         private System.Windows.Forms.Button openButton;
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Button dbButton;
     }
 }
 
