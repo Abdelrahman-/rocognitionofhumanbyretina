@@ -45,6 +45,10 @@
             this.pictureBoxMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxMain.TabIndex = 0;
             this.pictureBoxMain.TabStop = false;
+            this.pictureBoxMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBoxMain_MouseMove);
+            this.pictureBoxMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBoxMain_MouseDown);
+            this.pictureBoxMain.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxMain_Paint);
+            this.pictureBoxMain.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBoxMain_MouseUp);
             // 
             // closeButton
             // 
@@ -58,7 +62,7 @@
             // 
             // openButton
             // 
-            this.openButton.Location = new System.Drawing.Point(323, 41);
+            this.openButton.Location = new System.Drawing.Point(332, 41);
             this.openButton.Name = "openButton";
             this.openButton.Size = new System.Drawing.Size(75, 23);
             this.openButton.TabIndex = 2;
@@ -68,7 +72,7 @@
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(323, 96);
+            this.startButton.Location = new System.Drawing.Point(332, 95);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(75, 23);
             this.startButton.TabIndex = 3;
