@@ -93,8 +93,36 @@ namespace rocognitionofhumanbyretina
 
         private void dbButton_Click(object sender, EventArgs e)
         {
-            
+
+            dbForm = new DbForm();
+            dbForm.Activate();
             dbForm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddForm f = new AddForm();
+            f.Activate();
+            f.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Connector cn = new Connector();
+            cn.ConnectLinqDBInterface();
+
+            // Attach the log to show generated SQL.
+            //db.Log = Console.Out;
+
+            // Query for customers in London.
+
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Connector cn = new Connector();
+            //cn.AddRecordLinqToSQL();
         }
     }
 }
