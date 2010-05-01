@@ -92,28 +92,28 @@ SELECT id, firstName, secondName, figureCornea, figureDeployedCornea, tokenOne, 
   <xs:element name="Database1DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="Database1DataSet" msprop:Generator_DataSetName="Database1DataSet" msprop:EnableTableAdapterManager="True">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="test" msprop:Generator_UserTableName="test" msprop:Generator_RowDeletedName="testRowDeleted" msprop:Generator_TableClassName="testDataTable" msprop:Generator_RowChangedName="testRowChanged" msprop:Generator_RowClassName="testRow" msprop:Generator_RowChangingName="testRowChanging" msprop:Generator_RowEvArgName="testRowChangeEvent" msprop:Generator_RowEvHandlerName="testRowChangeEventHandler" msprop:Generator_TablePropName="test" msprop:Generator_TableVarName="tabletest" msprop:Generator_RowDeletingName="testRowDeleting">
+        <xs:element name="test" msprop:Generator_UserTableName="test" msprop:Generator_RowDeletedName="testRowDeleted" msprop:Generator_RowChangedName="testRowChanged" msprop:Generator_RowClassName="testRow" msprop:Generator_RowChangingName="testRowChanging" msprop:Generator_RowEvArgName="testRowChangeEvent" msprop:Generator_RowEvHandlerName="testRowChangeEventHandler" msprop:Generator_TableClassName="testDataTable" msprop:Generator_TableVarName="tabletest" msprop:Generator_RowDeletingName="testRowDeleting" msprop:Generator_TablePropName="test">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="id" msprop:Generator_UserColumnName="id" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInTable="idColumn" type="xs:int" />
-              <xs:element name="firstName" msprop:Generator_UserColumnName="firstName" msprop:Generator_ColumnPropNameInRow="firstName" msprop:Generator_ColumnVarNameInTable="columnfirstName" msprop:Generator_ColumnPropNameInTable="firstNameColumn" minOccurs="0">
+              <xs:element name="id" msprop:Generator_UserColumnName="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" type="xs:int" />
+              <xs:element name="firstName" msprop:Generator_UserColumnName="firstName" msprop:Generator_ColumnVarNameInTable="columnfirstName" msprop:Generator_ColumnPropNameInRow="firstName" msprop:Generator_ColumnPropNameInTable="firstNameColumn" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="secondName" msprop:Generator_UserColumnName="secondName" msprop:Generator_ColumnPropNameInRow="secondName" msprop:Generator_ColumnVarNameInTable="columnsecondName" msprop:Generator_ColumnPropNameInTable="secondNameColumn" minOccurs="0">
+              <xs:element name="secondName" msprop:Generator_UserColumnName="secondName" msprop:Generator_ColumnVarNameInTable="columnsecondName" msprop:Generator_ColumnPropNameInRow="secondName" msprop:Generator_ColumnPropNameInTable="secondNameColumn" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="figureCornea" msprop:Generator_UserColumnName="figureCornea" msprop:Generator_ColumnPropNameInRow="figureCornea" msprop:Generator_ColumnVarNameInTable="columnfigureCornea" msprop:Generator_ColumnPropNameInTable="figureCorneaColumn" type="xs:base64Binary" minOccurs="0" />
-              <xs:element name="figureDeployedCornea" msprop:Generator_UserColumnName="figureDeployedCornea" msprop:Generator_ColumnPropNameInRow="figureDeployedCornea" msprop:Generator_ColumnVarNameInTable="columnfigureDeployedCornea" msprop:Generator_ColumnPropNameInTable="figureDeployedCorneaColumn" type="xs:base64Binary" minOccurs="0" />
-              <xs:element name="tokenOne" msprop:Generator_UserColumnName="tokenOne" msprop:Generator_ColumnPropNameInRow="tokenOne" msprop:Generator_ColumnVarNameInTable="columntokenOne" msprop:Generator_ColumnPropNameInTable="tokenOneColumn" type="xs:double" minOccurs="0" />
-              <xs:element name="tokenTwo" msprop:Generator_UserColumnName="tokenTwo" msprop:Generator_ColumnPropNameInRow="tokenTwo" msprop:Generator_ColumnVarNameInTable="columntokenTwo" msprop:Generator_ColumnPropNameInTable="tokenTwoColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="figureCornea" msprop:Generator_UserColumnName="figureCornea" msprop:Generator_ColumnVarNameInTable="columnfigureCornea" msprop:Generator_ColumnPropNameInRow="figureCornea" msprop:Generator_ColumnPropNameInTable="figureCorneaColumn" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="figureDeployedCornea" msprop:Generator_UserColumnName="figureDeployedCornea" msprop:Generator_ColumnVarNameInTable="columnfigureDeployedCornea" msprop:Generator_ColumnPropNameInRow="figureDeployedCornea" msprop:Generator_ColumnPropNameInTable="figureDeployedCorneaColumn" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="tokenOne" msprop:Generator_UserColumnName="tokenOne" msprop:Generator_ColumnVarNameInTable="columntokenOne" msprop:Generator_ColumnPropNameInRow="tokenOne" msprop:Generator_ColumnPropNameInTable="tokenOneColumn" type="xs:double" minOccurs="0" />
+              <xs:element name="tokenTwo" msprop:Generator_UserColumnName="tokenTwo" msprop:Generator_ColumnVarNameInTable="columntokenTwo" msprop:Generator_ColumnPropNameInRow="tokenTwo" msprop:Generator_ColumnPropNameInTable="tokenTwoColumn" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
