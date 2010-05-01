@@ -33,10 +33,10 @@
             this.closeButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.testBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.database1DataSet = new rocognitionofhumanbyretina.Database1DataSet();
+      //      this.database1DataSet = new rocognitionofhumanbyretina.Database1DataSet();
             this.database1DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.testTableAdapter = new rocognitionofhumanbyretina.Database1DataSetTableAdapters.testTableAdapter();
-            this.tableAdapterManager = new rocognitionofhumanbyretina.Database1DataSetTableAdapters.TableAdapterManager();
+      //      this.testTableAdapter = new rocognitionofhumanbyretina.Database1DataSetTableAdapters.testTableAdapter();
+      //      this.tableAdapterManager = new rocognitionofhumanbyretina.Database1DataSetTableAdapters.TableAdapterManager();
 
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
@@ -72,7 +72,7 @@
 
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
+          //  ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
@@ -106,28 +106,28 @@
             // 
             // testBindingSource
             // 
-            this.testBindingSource.DataMember = "test";
-            this.testBindingSource.DataSource = this.database1DataSet;
+        //    this.testBindingSource.DataMember = "test";
+        //    this.testBindingSource.DataSource = this.database1DataSet;
             // 
             // database1DataSet
             // 
-            this.database1DataSet.DataSetName = "Database1DataSet";
-            this.database1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+        //    this.database1DataSet.DataSetName = "Database1DataSet";
+        //    this.database1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // database1DataSetBindingSource
             // 
-            this.database1DataSetBindingSource.DataSource = this.database1DataSet;
-            this.database1DataSetBindingSource.Position = 0;
+        //    this.database1DataSetBindingSource.DataSource = this.database1DataSet;
+        //    this.database1DataSetBindingSource.Position = 0;
             // 
             // testTableAdapter
             // 
-            this.testTableAdapter.ClearBeforeFill = true;
+        //    this.testTableAdapter.ClearBeforeFill = true;
             // 
             // tableAdapterManager
             // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.testTableAdapter = this.testTableAdapter;
-            this.tableAdapterManager.UpdateOrder = rocognitionofhumanbyretina.Database1DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+          //  this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+         //   this.tableAdapterManager.testTableAdapter = this.testTableAdapter;
+         //   this.tableAdapterManager.UpdateOrder = rocognitionofhumanbyretina.Database1DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
 
             // bindingNavigator1
@@ -400,8 +400,8 @@
             this.Load += new System.EventHandler(this.DbForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.database1DataSetBindingSource)).EndInit();
+         //   ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).EndInit();
+         //   ((System.ComponentModel.ISupportInitialize)(this.database1DataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
@@ -412,13 +412,13 @@
 
         #endregion
 
-        private Database1DataSet database1DataSet;
+     //   private Database1DataSet database1DataSet;
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource database1DataSetBindingSource;
         private System.Windows.Forms.BindingSource testBindingSource;
-        private rocognitionofhumanbyretina.Database1DataSetTableAdapters.testTableAdapter testTableAdapter;
-        private rocognitionofhumanbyretina.Database1DataSetTableAdapters.TableAdapterManager tableAdapterManager;
+     //   private rocognitionofhumanbyretina.Database1DataSetTableAdapters.testTableAdapter testTableAdapter;
+     //   private rocognitionofhumanbyretina.Database1DataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.BindingNavigator bindingNavigator1;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;

@@ -13,6 +13,7 @@ namespace rocognitionofhumanbyretina
     public partial class MainForm : Form
     {
         private DbForm dbForm = new DbForm();
+        private GraphForm graphForm = new GraphForm();
 
         private Connector dbConnector;
 
@@ -42,7 +43,7 @@ namespace rocognitionofhumanbyretina
         private void startButton_Click(object sender, EventArgs e)
         {
             Connector con = new Connector();
-            con.init();
+            //con.init();
         }
 
         private void pictureBoxMain_MouseDown(object sender, MouseEventArgs e)
@@ -123,6 +124,11 @@ namespace rocognitionofhumanbyretina
         {
             Connector cn = new Connector();
             //cn.AddRecordLinqToSQL();
+        }
+
+        private void graphButton_Click(object sender, EventArgs e)
+        {
+            graphForm.Show();
         }
     }
 }
