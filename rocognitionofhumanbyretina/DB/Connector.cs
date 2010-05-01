@@ -23,7 +23,7 @@ namespace rocognitionofhumanbyretina.DB
         {
             
             // Use a connection string.
-            DataContext db = new DataContext(Environment.CurrentDirectory + "\\resources\\PeopleDB.mdf");
+            DataContext db = new DataContext(System.Windows.Forms.Application.StartupPath + "\\resources\\PeopleDB.mdf");
 
             // Get a typed table to run queries.
             Table<Peoples> peo = db.GetTable<Peoples>();
@@ -44,8 +44,9 @@ namespace rocognitionofhumanbyretina.DB
 
         public void AddRecordLinqToSQL(String fName, String sName, String surName, System.Drawing.Image imageOne, System.Drawing.Image imageTwo, double valFirst, double valSecond)
         {
+            
             DataContext db = new DataContext
-                (Environment.CurrentDirectory + "\\resources\\PeopleDB.mdf");
+                (System.Windows.Forms.Application.StartupPath + "\\resources\\PeopleDB.mdf");
             Peoples newCust = new Peoples();
 
             MemoryStream msOne = new MemoryStream();
