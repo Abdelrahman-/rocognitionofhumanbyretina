@@ -196,6 +196,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>PeopleDB.mdf</DependentUpon>
     </Content>
+    <Content Include="resources\ZedGraph.dll" />
+    <Content Include="resources\ZedGraph.XML" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
