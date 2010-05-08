@@ -80,6 +80,9 @@
       <DependentUpon>AddForm.cs</DependentUpon>
     </Compile>
     <Compile Include="common\BitmapService.cs" />
+    <Compile Include="common\enums\EyeTypes.cs" />
+    <Compile Include="common\enums\GaborResult.cs" />
+    <Compile Include="common\gabor\Gabor2D.cs" />
     <Compile Include="common\GraphService.cs" />
     <Compile Include="common\Recognification.cs" />
     <Compile Include="DB\Human.cs" />
