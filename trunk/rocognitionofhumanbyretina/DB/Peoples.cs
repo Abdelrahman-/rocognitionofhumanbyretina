@@ -25,71 +25,19 @@ namespace rocognitionofhumanbyretina.DB
 
         }
 
-        private string _Name;
-        [Column(Storage="_Name")]
-        public string Name
+        private Int32 _HumId;
+        [Column(Storage = "_HumId",DbType="Int NOT NULL IDENTITY")]
+        public Int32 HumId
         {
             get
             {
-                try
-                {
-                    return this._Name;
-                }
-                catch (Exception e)
-                {
-                    System.Windows.Forms.MessageBox.Show("Ошибка каста в Name! - " + e.Message);
-                }
-                return this._Name;
+                return this._HumId;
             }
             set
             {
-                this._Name = value;
+                this._HumId = value;
             }
 
-        }
-
-        private string _SecondName;
-        [Column(Storage="_SecondName")]
-        public string SecondName
-        {
-            get
-            {
-                try
-                {
-                    return this._SecondName;
-                }
-                catch (Exception e)
-                {
-                    System.Windows.Forms.MessageBox.Show("Ошибка каста в SecondName! - " + e.Message);
-                }
-                return this._SecondName;
-            }
-            set
-            {
-                this._SecondName=value;
-            }
-        }
-
-        private string _SurName;
-        [Column(Storage = "_SurName")]
-        public string SurName
-        {
-            get
-            {
-                try
-                {
-                    return this._SurName;
-                }
-                catch (Exception e)
-                {
-                    System.Windows.Forms.MessageBox.Show("Ошибка каста в SurName! - " + e.Message);
-                }
-                return this._SurName;
-            }
-            set
-            {
-                this._SurName = value;
-            }
         }
 
         private byte[] _ImageFull;
