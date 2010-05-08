@@ -33,11 +33,7 @@
             this.closeButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.testBindingSource = new System.Windows.Forms.BindingSource(this.components);
-      //      this.database1DataSet = new rocognitionofhumanbyretina.Database1DataSet();
             this.database1DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-      //      this.testTableAdapter = new rocognitionofhumanbyretina.Database1DataSetTableAdapters.testTableAdapter();
-      //      this.tableAdapterManager = new rocognitionofhumanbyretina.Database1DataSetTableAdapters.TableAdapterManager();
-
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -60,19 +56,18 @@
             this.pasteToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.addButton = new System.Windows.Forms.Button();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImageBox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SecondName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.surName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ImageFull = new System.Windows.Forms.DataGridViewImageColumn();
             this.ImagePart = new System.Windows.Forms.DataGridViewImageColumn();
             this.Token1D = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Token2D = new System.Windows.Forms.DataGridViewTextBoxColumn();
-
-            this.addButton = new System.Windows.Forms.Button();
-
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testBindingSource)).BeginInit();
-          //  ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
@@ -93,6 +88,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Name,
+            this.ImageBox,
             this.SecondName,
             this.surName,
             this.ImageFull,
@@ -104,32 +100,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(744, 150);
             this.dataGridView1.TabIndex = 2;
             // 
-            // testBindingSource
-            // 
-        //    this.testBindingSource.DataMember = "test";
-        //    this.testBindingSource.DataSource = this.database1DataSet;
-            // 
-            // database1DataSet
-            // 
-        //    this.database1DataSet.DataSetName = "Database1DataSet";
-        //    this.database1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // database1DataSetBindingSource
-            // 
-        //    this.database1DataSetBindingSource.DataSource = this.database1DataSet;
-        //    this.database1DataSetBindingSource.Position = 0;
-            // 
-            // testTableAdapter
-            // 
-        //    this.testTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-          //  this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-         //   this.tableAdapterManager.testTableAdapter = this.testTableAdapter;
-         //   this.tableAdapterManager.UpdateOrder = rocognitionofhumanbyretina.Database1DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-
             // bindingNavigator1
             // 
             this.bindingNavigator1.AddNewItem = this.bindingNavigatorAddNewItem;
@@ -223,7 +193,7 @@
             this.bindingNavigatorPositionItem.AutoSize = false;
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 21);
-            this.bindingNavigatorPositionItem.Text = "1";
+            this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
             // bindingNavigatorSeparator1
@@ -336,10 +306,32 @@
             this.helpToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.helpToolStripButton.Text = "He&lp";
             // 
+            // addButton
+            // 
+            this.addButton.Location = new System.Drawing.Point(575, 383);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(75, 23);
+            this.addButton.TabIndex = 3;
+            this.addButton.Text = "Add";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(75, 180);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(575, 188);
+            this.treeView1.TabIndex = 4;
+            // 
             // Name
             // 
             this.Name.HeaderText = "Name";
             this.Name.Name = "Name";
+            // 
+            // ImageBox
+            // 
+            this.ImageBox.HeaderText = "ImageBox";
+            this.ImageBox.Name = "ImageBox";
             // 
             // SecondName
             // 
@@ -372,36 +364,22 @@
             this.Token2D.HeaderText = "Token2D";
             this.Token2D.Name = "Token2D";
             // 
-            // addButton
-            // 
-            this.addButton.Location = new System.Drawing.Point(575, 383);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(75, 23);
-            this.addButton.TabIndex = 3;
-            this.addButton.Text = "Add";
-            this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
-            // 
-
             // DbForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(770, 415);
-
+            this.Controls.Add(this.treeView1);
             this.Controls.Add(this.bindingNavigator1);
-
             this.Controls.Add(this.addButton);
-
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.closeButton);
-            
+           // this.Name = "DbForm";
             this.Text = "FormDb";
             this.Load += new System.EventHandler(this.DbForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testBindingSource)).EndInit();
-         //   ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).EndInit();
-         //   ((System.ComponentModel.ISupportInitialize)(this.database1DataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.database1DataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
@@ -441,13 +419,15 @@
         private System.Windows.Forms.ToolStripButton pasteToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton helpToolStripButton;
+        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ImageBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn SecondName;
         private System.Windows.Forms.DataGridViewTextBoxColumn surName;
         private System.Windows.Forms.DataGridViewImageColumn ImageFull;
         private System.Windows.Forms.DataGridViewImageColumn ImagePart;
         private System.Windows.Forms.DataGridViewTextBoxColumn Token1D;
         private System.Windows.Forms.DataGridViewTextBoxColumn Token2D;
-        private System.Windows.Forms.Button addButton;
     }
 }

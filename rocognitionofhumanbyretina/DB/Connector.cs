@@ -58,16 +58,60 @@ namespace rocognitionofhumanbyretina.DB
             imageTwo.Save(msTwo, ImageFormat.Jpeg);
             bArrTwo = msTwo.GetBuffer();
 
-            newCust.Name = fName;
-            newCust.SecondName = sName;
-            newCust.SurName = surName;
-            newCust.ImageFull = (byte[])bArrOne;
+            //newCust.Name = fName;
+            //newCust.SecondName = sName;
+            //newCust.SurName = surName;
+            //newCust.ImageFull = (byte[])bArrOne;
             newCust.ImagePart = (byte[])bArrTwo;
             newCust.Token1D = 1;
             newCust.Token2D = 1;
             Table<Peoples> peo = db.GetTable<Peoples>();
             // Add the customer to the Customers table.
             peo.InsertOnSubmit(newCust);
+            db.SubmitChanges();
+            db.Connection.Close();
+        }
+
+        public void addNewHumanInfoToDB(Int32 HumanID,System.Drawing.Image imageOne, System.Drawing.Image imageTwo, double valFirst, double valSecond)
+        {
+            DataContext db = new DataContext
+            (System.Windows.Forms.Application.StartupPath + "\\resources\\PeopleDB.mdf");
+            Peoples newCust = new Peoples();
+
+            MemoryStream msOne = new MemoryStream();
+            byte[] bArrOne = null;
+            imageOne.Save(msOne, ImageFormat.Jpeg);
+            bArrOne = msOne.GetBuffer();
+            MemoryStream msTwo = new MemoryStream();
+            byte[] bArrTwo = null;
+            imageTwo.Save(msTwo, ImageFormat.Jpeg);
+            bArrTwo = msTwo.GetBuffer();
+            //newCust.Name = fName;
+            //newCust.SecondName = sName;
+            //newCust.SurName = surName;
+            newCust.ImageFull = (byte[])bArrOne;
+            newCust.ImagePart = (byte[])bArrTwo;
+            newCust.Token1D = 1;
+            newCust.Token2D = 1;
+            newCust.HumId = HumanID;
+            Table<Peoples> peo = db.GetTable<Peoples>();
+            // Add the customer to the Customers table.
+            peo.InsertOnSubmit(newCust);
+            db.SubmitChanges();
+            db.Connection.Close();
+        }
+
+        public void addNewHumanToDB(String fName, String sName, String surName)
+        {
+            DataContext db = new DataContext
+            (System.Windows.Forms.Application.StartupPath + "\\resources\\PeopleDB.mdf");
+            Human newCust = new Human();
+            newCust.Name = fName;
+            newCust.SecondName = sName;
+            newCust.SurName = surName;
+            Table<Human> hum = db.GetTable<Human>();
+            // Add the customer to the Customers table.
+            hum.InsertOnSubmit(newCust);
             db.SubmitChanges();
             db.Connection.Close();
         }

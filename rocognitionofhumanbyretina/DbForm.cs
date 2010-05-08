@@ -38,9 +38,9 @@ namespace rocognitionofhumanbyretina
             for(int i=0; i<cn.ConnectLinqDBInterface().Count;i++)
             {
                 this.dataGridView1.Rows.Add(1);
-                this.dataGridView1.Rows[i].Cells[0].Value = peoples[i].Name;
-                this.dataGridView1.Rows[i].Cells[1].Value = peoples[i].SecondName;
-                this.dataGridView1.Rows[i].Cells[2].Value = peoples[i].SurName;
+                //this.dataGridView1.Rows[i].Cells[0].Value = peoples[i].Name;
+                //this.dataGridView1.Rows[i].Cells[1].Value = peoples[i].SecondName;
+                //this.dataGridView1.Rows[i].Cells[2].Value = peoples[i].SurName;
                 bArrOne = (byte[])peoples[i].ImageFull;
                 msOne=new MemoryStream(bArrOne);
                 firstIm = new Bitmap(msOne);
@@ -52,6 +52,15 @@ namespace rocognitionofhumanbyretina
                 this.dataGridView1.Rows[i].Cells[5].Value = peoples[i].Token1D;
                 this.dataGridView1.Rows[i].Cells[6].Value = peoples[i].Token2D;
                 }
+
+            TreeNode root = new TreeNode();
+            ImageList imageList=new ImageList();
+            imageList.Images.Add(secIm);
+            root.ImageIndex = 0;
+
+            (this.dataGridView1.Rows[1].Cells[7]as DataGridViewComboBoxCell).Items.Add(imageList.Images[0]);
+            treeView1.ImageList = imageList;
+            treeView1.Nodes.Add(new TreeNode());
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -59,5 +68,7 @@ namespace rocognitionofhumanbyretina
             addForm = new AddForm();
             addForm.Show();
         }
+
+
     }
 }
