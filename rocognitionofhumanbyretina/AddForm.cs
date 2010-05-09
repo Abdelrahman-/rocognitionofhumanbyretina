@@ -22,14 +22,14 @@ namespace rocognitionofhumanbyretina
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        /*private void button1_Click(object sender, EventArgs e)
         {
             System.Drawing.Image imageFirst= pictureBox1.Image;
             System.Drawing.Image imageSecond = pictureBox2.Image;
             Connector con = new Connector();
             //con.addRecordToDB(11, textBox1.Text, textBox2.Text, imageFirst, imageSecond, 24, 3);
             con.AddRecordLinqToSQL(textBox1.Text, textBox2.Text, textBox3.Text, imageFirst, imageSecond, 1, 1);
-        }
+        }*/
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -45,6 +45,11 @@ namespace rocognitionofhumanbyretina
             {
                 pictureBox2.Image = new Bitmap(openFileDialog1.FileName);
             }
+        }
+
+        private void submitButton_Click(object sender, EventArgs e)
+        {
+
         }
 
 

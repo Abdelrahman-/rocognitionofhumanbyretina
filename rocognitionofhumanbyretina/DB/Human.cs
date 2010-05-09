@@ -12,14 +12,29 @@ namespace rocognitionofhumanbyretina.DB
     class Human
     {
 
+        private Int32 _HumanId;
+        [Column(Storage = "_HumanId", IsDbGenerated=true,IsPrimaryKey = true)]
+        public Int32 HumanId
+        {
+            get
+            {
+                return this._HumanId;
+            }
+            set
+            {
+                this._HumanId = value;
+            }
 
+        }
+
+        //private byte[] _ImageFull;
         private EntitySet<Peoples> _Peoples;
         public Human()
         {
             this._Peoples = new EntitySet<Peoples>();
         }
 
-        [Association(Storage = "_Peoples", OtherKey = "HumId")]
+        [Association(Storage = "_Peoples", OtherKey = "HumanId")]
         public EntitySet<Peoples> Peoples
         {
             get { return this._Peoples; }
