@@ -42,6 +42,106 @@ namespace rocognitionofhumanbyretina.DB
             return tempPeoplesStorage;
         }
 
+        public Human GetHumansInfo(int id)
+        {
+
+            // Use a connection string.
+            DataContext db = new DataContext(System.Windows.Forms.Application.StartupPath + "\\resources\\PeopleDB.mdf");
+
+            // Get a typed table to run queries.
+            Table<Human> peo = db.GetTable<Human>();
+            
+            IQueryable<Human> custQuery =
+            from cust in peo
+            where cust.HumanId == id
+            select cust;
+            int i = 0;
+            Human tempHumanStorage = new Human();
+            foreach (Human cust in custQuery)
+            {
+                tempHumanStorage=cust;
+                custQuery.GetEnumerator().MoveNext();
+                i++;
+            }
+            db.Connection.Close();
+            return tempHumanStorage;
+        }
+        public Human GetHumansInfoBySecondName(string secondName)
+        {
+
+            // Use a connection string.
+            DataContext db = new DataContext(System.Windows.Forms.Application.StartupPath + "\\resources\\PeopleDB.mdf");
+
+            // Get a typed table to run queries.
+            Table<Human> peo = db.GetTable<Human>();
+
+            IQueryable<Human> custQuery =
+            from cust in peo
+            where cust.SecondName == secondName
+            select cust;
+            int i = 0;
+            Human tempHumanStorage = new Human();
+            foreach (Human cust in custQuery)
+            {
+                tempHumanStorage = cust;
+                custQuery.GetEnumerator().MoveNext();
+                i++;
+            }
+            db.Connection.Close();
+            return tempHumanStorage;
+        }
+
+
+        public List<Peoples> GetAllImages()
+        {
+
+            // Use a connection string.
+            DataContext db = new DataContext(System.Windows.Forms.Application.StartupPath + "\\resources\\PeopleDB.mdf");
+
+            // Get a typed table to run queries.
+            Table<Peoples> peo = db.GetTable<Peoples>();
+
+            IQueryable<Peoples> custQuery =
+            from cust in peo
+            select cust;
+            int i = 0;
+            List<Peoples> tempHumanStorage = new List<Peoples>();
+            foreach (Peoples cust in custQuery)
+            {
+                tempHumanStorage.Add(cust);
+                custQuery.GetEnumerator().MoveNext();
+                i++;
+            }
+            db.Connection.Close();
+            return tempHumanStorage;
+        }
+
+        public List<Human> GetAllHumansInfo()
+        {
+
+            // Use a connection string.
+            DataContext db = new DataContext(System.Windows.Forms.Application.StartupPath + "\\resources\\PeopleDB.mdf");
+
+            // Get a typed table to run queries.
+            Table<Human> peo = db.GetTable<Human>();
+
+            IQueryable<Human> custQuery =
+            from cust in peo
+            select cust;
+            int i = 0;
+            List<Human> tempHumanStorage = new List<Human>();
+            foreach (Human cust in custQuery)
+            {
+                tempHumanStorage.Add(cust);
+                custQuery.GetEnumerator().MoveNext();
+                i++;
+            }
+            
+            db.Connection.Close();
+            return tempHumanStorage;
+        }
+
+        /*
         public void AddRecordLinqToSQL(String fName, String sName, String surName, System.Drawing.Image imageOne, System.Drawing.Image imageTwo, double valFirst, double valSecond)
         {
             
@@ -63,21 +163,20 @@ namespace rocognitionofhumanbyretina.DB
             //newCust.SurName = surName;
             //newCust.ImageFull = (byte[])bArrOne;
             newCust.ImagePart = (byte[])bArrTwo;
-            newCust.Token1D = 1;
-            newCust.Token2D = 1;
+            newCust.Token1D_AttrOne = 1;
+            newCust.Token2D_AttrOne = 1;
             Table<Peoples> peo = db.GetTable<Peoples>();
             // Add the customer to the Customers table.
             peo.InsertOnSubmit(newCust);
             db.SubmitChanges();
             db.Connection.Close();
-        }
+        }*/
 
-        public void addNewHumanInfoToDB(Int32 HumanID,System.Drawing.Image imageOne, System.Drawing.Image imageTwo, double valFirst, double valSecond)
+        public void addNewHumanInfoToDB(Int32 HumanID, System.Drawing.Image imageOne, System.Drawing.Image imageTwo, double valToken1DOne, double valToken2DOne, double valToken1DTwo, double valToken2DTwo,string EyeType)
         {
             DataContext db = new DataContext
             (System.Windows.Forms.Application.StartupPath + "\\resources\\PeopleDB.mdf");
             Peoples newCust = new Peoples();
-
             MemoryStream msOne = new MemoryStream();
             byte[] bArrOne = null;
             imageOne.Save(msOne, ImageFormat.Jpeg);
@@ -86,16 +185,15 @@ namespace rocognitionofhumanbyretina.DB
             byte[] bArrTwo = null;
             imageTwo.Save(msTwo, ImageFormat.Jpeg);
             bArrTwo = msTwo.GetBuffer();
-            //newCust.Name = fName;
-            //newCust.SecondName = sName;
-            //newCust.SurName = surName;
             newCust.ImageFull = (byte[])bArrOne;
             newCust.ImagePart = (byte[])bArrTwo;
-            newCust.Token1D = 1;
-            newCust.Token2D = 1;
-            newCust.HumId = HumanID;
+            newCust.Token1D_AttrOne = valToken1DOne;
+            newCust.Token2D_AttrOne = valToken2DOne;
+            newCust.Token1D_AttrTwo = valToken1DTwo;
+            newCust.Token2D_AttrTwo = valToken2DTwo;
+            newCust.EyeType = EyeType;
+            newCust.HumanId = HumanID;
             Table<Peoples> peo = db.GetTable<Peoples>();
-            // Add the customer to the Customers table.
             peo.InsertOnSubmit(newCust);
             db.SubmitChanges();
             db.Connection.Close();
@@ -110,7 +208,6 @@ namespace rocognitionofhumanbyretina.DB
             newCust.SecondName = sName;
             newCust.SurName = surName;
             Table<Human> hum = db.GetTable<Human>();
-            // Add the customer to the Customers table.
             hum.InsertOnSubmit(newCust);
             db.SubmitChanges();
             db.Connection.Close();
