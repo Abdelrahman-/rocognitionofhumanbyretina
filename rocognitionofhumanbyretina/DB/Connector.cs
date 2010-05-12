@@ -141,38 +141,7 @@ namespace rocognitionofhumanbyretina.DB
             return tempHumanStorage;
         }
 
-        /*
-        public void AddRecordLinqToSQL(String fName, String sName, String surName, System.Drawing.Image imageOne, System.Drawing.Image imageTwo, double valFirst, double valSecond)
-        {
-            
-            DataContext db = new DataContext
-                (System.Windows.Forms.Application.StartupPath + "\\resources\\PeopleDB.mdf");
-            Peoples newCust = new Peoples();
-
-            MemoryStream msOne = new MemoryStream();
-            byte[] bArrOne = null;
-            imageOne.Save(msOne, ImageFormat.Jpeg);
-            bArrOne = msOne.GetBuffer();
-            MemoryStream msTwo = new MemoryStream();
-            byte[] bArrTwo = null;
-            imageTwo.Save(msTwo, ImageFormat.Jpeg);
-            bArrTwo = msTwo.GetBuffer();
-
-            //newCust.Name = fName;
-            //newCust.SecondName = sName;
-            //newCust.SurName = surName;
-            //newCust.ImageFull = (byte[])bArrOne;
-            newCust.ImagePart = (byte[])bArrTwo;
-            newCust.Token1D_AttrOne = 1;
-            newCust.Token2D_AttrOne = 1;
-            Table<Peoples> peo = db.GetTable<Peoples>();
-            // Add the customer to the Customers table.
-            peo.InsertOnSubmit(newCust);
-            db.SubmitChanges();
-            db.Connection.Close();
-        }*/
-
-        public void addNewHumanInfoToDB(Int32 HumanID, System.Drawing.Image imageOne, System.Drawing.Image imageTwo, double valToken1DOne, double valToken2DOne, double valToken1DTwo, double valToken2DTwo,string EyeType)
+        public void addNewHumanInfoToDB(Int32 HumanID, Image imageOne, Image imageTwo, double valToken1DOne, double valToken1DTwo, double valToken2DOne, double valToken2DTwo,string EyeType)
         {
             DataContext db = new DataContext
             (System.Windows.Forms.Application.StartupPath + "\\resources\\PeopleDB.mdf");
