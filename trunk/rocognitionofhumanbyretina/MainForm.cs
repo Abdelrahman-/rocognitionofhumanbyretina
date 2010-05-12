@@ -102,9 +102,7 @@ namespace rocognitionofhumanbyretina
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AddForm f = new AddForm();
-            f.Activate();
-            f.Show();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
