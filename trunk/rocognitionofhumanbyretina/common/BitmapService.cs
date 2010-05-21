@@ -20,5 +20,32 @@ namespace rocognitionofhumanbyretina.common
         {
             return new Bitmap(new MemoryStream(imgByteArray));
         }
+
+        public double HD(Bitmap image1, Bitmap image2)
+        {
+            int maxX = image1.Width;
+            int maxY = image1.Height;
+
+            int min = 999999;
+
+            int deltaX = maxX * 0.05;
+
+            for (int i = 0; i < deltaX; i++)
+            {
+                int sum = 0;
+
+                for (int x = (maxX / 4) + i; x < (maxX * 3 / 4 + i); x++)
+                    for (int y = 0; y < (maxY * 2 / 3); y++)
+                    {
+                        if (image1.GetPixel(x, y).ToArgb() != image2.GetPixel(x, y).ToArgb())
+                            sum++;
+                    }
+
+                if (sum < min)
+                    min = sum;
+            }
+
+            return (min / (maxX * maxY));
+        }
     }
 }
