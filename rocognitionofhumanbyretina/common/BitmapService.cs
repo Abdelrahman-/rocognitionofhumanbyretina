@@ -28,7 +28,7 @@ namespace rocognitionofhumanbyretina.common
 
             int min = 999999;
 
-            int deltaX = maxX * 0.05;
+            double deltaX = maxX * 0.05;
 
             for (int i = 0; i < deltaX; i++)
             {

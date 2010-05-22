@@ -76,6 +76,7 @@
     <Compile Include="common\BitmapService.cs" />
     <Compile Include="common\enums\EyeTypes.cs" />
     <Compile Include="common\enums\GaborResult.cs" />
+    <Compile Include="common\gabor\Gabor1D.cs" />
     <Compile Include="common\gabor\Gabor2D.cs" />
     <Compile Include="common\gabor\GaborWavelet.cs" />
     <Compile Include="common\GraphService.cs" />
