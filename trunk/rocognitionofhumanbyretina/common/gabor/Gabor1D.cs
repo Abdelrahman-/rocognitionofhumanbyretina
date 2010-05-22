@@ -1,19 +1,22 @@
 ﻿//using System;
 //using System.Collections.Generic;
+//using System.Linq;
 //using System.Text;
 //using System.Drawing;
-//using System.Drawing.Imaging;
 
-//class GaborWavelet
+//namespace rocognitionofhumanbyretina.common.gabor
 //{
-//    Bitmap sourceIrisImage;
+//    class Gabor1D
+//    {
+//        int[] irisCodeRealPartMatrix1D;
+//        Bitmap sourceIrisImage;
 //    int[,] irisCodeRealPartMatrix;
 //    int[,] irisCodeImaginaryPartMatrix;
 //    Image irisCodeRealPartPicture;
 //    Image irisCodeImaginaryPartPicture;
 //    int radiiCount = 60;
 
-//    public GaborWavelet(Image image)
+//    public Gabor1D(Image image)
 //    {
 //        sourceIrisImage = new Bitmap(image);
 
@@ -26,6 +29,27 @@
 //    {
 //        int bit = 0;
 //        double integral = 0;
+
+//        irisCodeRealPartMatrix1D = new int[sourceIrisImage.Height * sourceIrisImage.Width];
+//        for (int j=0,i = 0; i < sourceIrisImage.Height; i++)
+//            for (int k = 0; k < sourceIrisImage.Width; k++,j++)
+//            {
+//                irisCodeRealPartMatrix1D[j] = sourceIrisImage.SourceHalftoneMatrix[i, k];
+//            }
+        
+//        //for (int i = r0; i < r0 + 6; i++)
+//        //{
+//        //    integral=integral+i*irisCodeRealPartMatrix1D[i]
+//        //        *
+//        //        if()
+//        //}
+//            for (int i = r0; i < r0 + 6; i++)
+//                for (int k = teta0; k < teta0 + 6; k++)
+//                {
+//                    integral = integral + i * sourceIrisImage.SourceHalftoneMatrix[i, k] *
+//                        Math.Cos(omega * (teta0 + 3 - k)) * Math.Exp(-Math.Pow((r0 + 3 - i) / alpha, 2)) *
+//                        Math.Exp(-Math.Pow((teta0 + 3 - k) / beta, 2));
+//                }
 
 //        for (int i = r0; i < r0 + 6; i++)
 //            for (int k = teta0; k < teta0 + 6; k++)
@@ -141,5 +165,6 @@
 //            }
 //        irisCodeImaginaryPartPicture = (Image)newImage;
 //        return irisCodeImaginaryPartPicture;
+//    }
 //    }
 //}
