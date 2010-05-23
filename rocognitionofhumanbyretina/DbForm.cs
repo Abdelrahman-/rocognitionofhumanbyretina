@@ -80,7 +80,7 @@ namespace rocognitionofhumanbyretina
 
                 for (int i = 0; i < human.Peoples.Count; i++)
                 {
-                    imageBytes = (byte[])peoples[i].ImageFull;
+                    imageBytes = (byte[])human.Peoples[i].ImageFull;
                     tempImage = bmpServ.ByteToBmp(imageBytes);
 
                     imageList1.Images.Add((Image)tempImage);
@@ -106,7 +106,7 @@ namespace rocognitionofhumanbyretina
 
                 for (int i = 0; i < human.Peoples.Count; i++)
                 {
-                    imageBytes = (byte[])peoples[i].ImagePart;
+                    imageBytes = (byte[])human.Peoples[i].ImagePart;
                     tempImage = bmpServ.ByteToBmp(imageBytes);
                     imageList2.Images.Add((Image)tempImage);
 
@@ -166,8 +166,8 @@ namespace rocognitionofhumanbyretina
                 eyeType = EyeTypes.RIGHT;
             Gabor1D gabor1d = new Gabor1D(imageSecond as Bitmap);
             Gabor2D gabor2d = new Gabor2D(imageSecond as Bitmap);
-            gabor1d.CalculateKernel1D(gabor1d.Image, 0, 30, imageSecond.Width, imageSecond.Height);
-            gabor2d.CalculateKernel2D(gabor2d.Image, 0, 30, imageSecond.Width, imageSecond.Height);
+            gabor1d.CalculateKernel1D(gabor1d.Image, 45, 10, imageSecond.Width, imageSecond.Height);
+            gabor2d.CalculateKernel2D(gabor2d.Image, 45, 10, imageSecond.Width, imageSecond.Height);
             //GaborResult gabor2dResult = gabor2d.GaborTransform(new Bitmap(imageSecond));
 
             Image gabor1dRe=new Bitmap(gabor1d.GaborRealCodeArray1D);
