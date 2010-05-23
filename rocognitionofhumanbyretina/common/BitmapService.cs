@@ -9,6 +9,24 @@ namespace rocognitionofhumanbyretina.common
 {
     class BitmapService
     {
+        public Bitmap ByteToBmp(byte[,] imgByteArray)
+        {
+            int width = imgByteArray.GetLength(0);
+            int heigh = imgByteArray.GetLength(1);
+
+            Bitmap bmp = new Bitmap(width, heigh);
+
+            for (int x = 0; x < width; x++)
+                for (int y = 0; y < heigh; y++)
+                {
+                    if (imgByteArray[x,y]==0)
+                        bmp.SetPixel(x,y,Color.FromArgb(0,0,0));
+                    else
+                        bmp.SetPixel(x,y,Color.FromArgb(255,255,255));
+                }
+            return bmp;
+        }
+
         public byte[] bmpToByte(Bitmap image)
         {
             MemoryStream memoryStream = new MemoryStream();
