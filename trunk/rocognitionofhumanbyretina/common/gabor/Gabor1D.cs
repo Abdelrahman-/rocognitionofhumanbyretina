@@ -49,8 +49,8 @@ using rocognitionofhumanbyretina.common;
                         {
                             if (!(j + k < 0) || !(im.Length < j + k))
                             {
-                                real = KernelRealPart1D(k, Orientation, Frequency);
-                                img = KernelImgPart1D(k, Orientation, Frequency);
+                                real = KernelRealPart1D(x+k, Orientation, Frequency);
+                                img = KernelImgPart1D(x+k, Orientation, Frequency);
 
                                 integralReal = integralReal + im[i, k] * real;
                                 integralIma = integralIma + im[i, k] * img;
@@ -62,22 +62,22 @@ using rocognitionofhumanbyretina.common;
                         }
                     }
 
-                    if (integralReal >= 0)
+                    if (integralReal > 0)
                     {
                         bitReal = 1;
                     }
-                    else if (integralReal < 0)
+                    else if (integralReal <= 0)
                     {
                         bitReal = 0;
                     }
 
                     codeArrayReal[i, j] = bitReal;
 
-                    if (integralIma >= 0)
+                    if (integralIma > 0)
                     {
                         bitIm = 1;
                     }
-                    else if (integralIma < 0)
+                    else if (integralIma <= 0)
                     {
                         bitIm = 0;
                     }
