@@ -87,9 +87,9 @@ namespace rocognitionofhumanbyretina.DB
 
         }
 
-        private double _Token1D_AttrOne;
+        private byte[] _Token1D_AttrOne;
         [Column(Storage = "_Token1D_AttrOne")]
-        public double Token1D_AttrOne
+        public byte[] Token1D_AttrOne
         {
             get
             {
@@ -110,9 +110,9 @@ namespace rocognitionofhumanbyretina.DB
 
         }
 
-        private double _Token2D_AttrOne;
+        private byte[] _Token2D_AttrOne;
         [Column(Storage = "_Token2D_AttrOne")]
-        public double Token2D_AttrOne
+        public byte[] Token2D_AttrOne
         {
             get
             {
@@ -133,9 +133,9 @@ namespace rocognitionofhumanbyretina.DB
 
         }
 
-        private double _Token1D_AttrTwo;
+        private byte[] _Token1D_AttrTwo;
         [Column(Storage = "_Token1D_AttrTwo")]
-        public double Token1D_AttrTwo
+        public byte[] Token1D_AttrTwo
         {
             get
             {
@@ -156,9 +156,9 @@ namespace rocognitionofhumanbyretina.DB
 
         }
 
-        private double _Token2D_AttrTwo;
+        private byte[] _Token2D_AttrTwo;
         [Column(Storage = "_Token2D_AttrTwo")]
-        public double Token2D_AttrTwo
+        public byte[] Token2D_AttrTwo
         {
             get
             {

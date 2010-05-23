@@ -141,7 +141,7 @@ namespace rocognitionofhumanbyretina.DB
             return tempHumanStorage;
         }
 
-        public void addNewHumanInfoToDB(Int32 HumanID, Image imageOne, Image imageTwo, double valToken1DOne, double valToken1DTwo, double valToken2DOne, double valToken2DTwo,string EyeType)
+        public void addNewHumanInfoToDB(Int32 HumanID, Image imageOne, Image imageTwo, byte[] valToken1DOne, byte[] valToken1DTwo, byte[] valToken2DOne, byte[] valToken2DTwo, string EyeType)
         {
             DataContext db = new DataContext
             (System.Windows.Forms.Application.StartupPath + "\\resources\\PeopleDB.mdf");
