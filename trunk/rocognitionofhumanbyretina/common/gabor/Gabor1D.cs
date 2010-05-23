@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using rocognitionofhumanbyretina.common;
 
     class Gabor1D: Gabor
     {
-        private byte[,] gaborRealCodeArray1D;
-        private byte[,] gaborImCodeArray1D;
+        private Bitmap gaborRealCodeArray1D;
+        private Bitmap gaborImCodeArray1D;
 
-        public byte[,] GaborRealCodeArray1D
+        public Image GaborRealCodeArray1D
         {
             get { return gaborRealCodeArray1D; }
         }
-        public byte[,] GaborImCodeArray1D
+        public Image GaborImCodeArray1D
         {
             get { return gaborImCodeArray1D; }
         }
@@ -42,7 +43,7 @@ using System.Drawing;
                 {
                     k = 0;
 
-                    for (k = j - 3; k < j + 3; k++)
+                    for (k = j - 1; k < j + 2; k++)
                     {
                         try
                         {
@@ -84,8 +85,8 @@ using System.Drawing;
                     integralReal = 0;
                     integralIma = 0;
                 }
-            gaborRealCodeArray1D = codeArrayReal;
-            gaborImCodeArray1D = codeArrayIma;
+            gaborRealCodeArray1D =BitmapService.ByteToBmp(codeArrayReal);
+            gaborImCodeArray1D = BitmapService.ByteToBmp(codeArrayIma);
         }
 
         private double KernelRealPart1D(int x, int Orientation, int Frequency)
