@@ -10,6 +10,8 @@ using rocognitionofhumanbyretina.DB;
 using rocognitionofhumanbyretina.common;
 using rocognitionofhumanbyretina.common.enums;
 using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace rocognitionofhumanbyretina
 {
@@ -168,25 +170,44 @@ namespace rocognitionofhumanbyretina
             gabor2d.CalculateKernel2D(gabor2d.Image, 0, 30, imageSecond.Width, imageSecond.Height);
             //GaborResult gabor2dResult = gabor2d.GaborTransform(new Bitmap(imageSecond));
 
-            byte[] gabor1dRe = new byte[imageSecond.Width * imageSecond.Height];
-            byte[] gabor1dIm = new byte[imageSecond.Width * imageSecond.Height];
-            byte[] gabor2dRe = new byte[imageSecond.Width * imageSecond.Height];
-            byte[] gabor2dIm = new byte[imageSecond.Width * imageSecond.Height];
-
-            for (int i = 0,k=0; i < imageSecond.Width; i++)
-            {
-                for (int j = 0; j < imageSecond.Height; j++,k++)
-                {
-                    gabor1dRe[k] = gabor1d.GaborRealCodeArray1D[i, j];
-                    gabor1dIm[k] = gabor1d.GaborImCodeArray1D[i, j];
-                    gabor2dRe[k] = gabor2d.GaborRealCodeArray2D[i, j];
-                    gabor2dIm[k] = gabor2d.GaborImCodeArray2D[i, j];
-                }
-            }
+            Image gabor1dRe=new Bitmap(gabor1d.GaborRealCodeArray1D);
+            Image gabor1dIm = new Bitmap(gabor1d.GaborImCodeArray1D);
+            Image gabor2dRe = new Bitmap(gabor2d.GaborRealCodeArray2D);
+            Image gabor2dIm = new Bitmap(gabor2d.GaborImCodeArray2D);
 
 
-                con.addNewHumanInfoToDB(Int32.Parse(comboBox1.Text), imageFirst, imageSecond, gabor1dRe, gabor1dIm,
-                    gabor2dRe, gabor2dIm, eyeType.ToString());
+            MemoryStream msOne = new MemoryStream();
+            byte[] bArrOne = null;
+            gabor1dRe.Save(msOne, ImageFormat.Jpeg);
+            bArrOne = msOne.GetBuffer();
+            MemoryStream msTwo = new MemoryStream();
+            byte[] bArrTwo = null;
+            gabor1dIm.Save(msTwo, ImageFormat.Jpeg);
+            bArrTwo = msTwo.GetBuffer();
+            MemoryStream msThree = new MemoryStream();
+            byte[] bArrThree = null;
+            gabor2dRe.Save(msThree, ImageFormat.Jpeg);
+            bArrThree = msThree.GetBuffer();
+            MemoryStream msFour = new MemoryStream();
+            byte[] bArrFour = null;
+            gabor2dIm.Save(msFour, ImageFormat.Jpeg);
+            bArrFour = msFour.GetBuffer();
+
+
+            //for (int i = 0,k=0; i < imageSecond.Width; i++)
+            //{
+            //    for (int j = 0; j < imageSecond.Height; j++,k++)
+            //    {
+            //        gabor1dRe[k] = gabor1d.GaborRealCodeArray1D[i, j];
+            //        gabor1dIm[k] = gabor1d.GaborImCodeArray1D[i, j];
+            //        gabor2dRe[k] = gabor2d.GaborRealCodeArray2D[i, j];
+            //        gabor2dIm[k] = gabor2d.GaborImCodeArray2D[i, j];
+            //    }
+            //}
+
+
+            con.addNewHumanInfoToDB(Int32.Parse(comboBox1.Text), imageFirst, imageSecond, bArrOne, bArrTwo,
+                    bArrThree, bArrFour, eyeType.ToString());
 
             MessageBox.Show("Added new eye");
         }
@@ -195,6 +216,52 @@ namespace rocognitionofhumanbyretina
         {
             Connector con = new Connector();
             con.addNewHumanToDB(textBox1.Text, textBox2.Text, textBox3.Text);
+        }
+
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listView2.SelectedItems.Count > 0)
+            {
+                int img_id = Convert.ToInt32(listView2.SelectedItems[0].Tag);
+
+                Connector cn = new Connector();
+                Peoples peo=cn.GetImagesDataByHumanID(img_id);
+
+                ImageList imageList3 = new ImageList();
+                imageList3.ImageSize = new Size(250, 50);
+                imageList3.Images.Clear();
+
+                listView3.Items.Clear();
+                listView3.LargeImageList = imageList3;
+                listView3.BeginUpdate();
+
+                BitmapService bms = new BitmapService();
+
+                imageList3.Images.Add(bms.ByteToBmp(peo.Token1D_AttrOne));
+                imageList3.Images.Add(bms.ByteToBmp(peo.Token1D_AttrTwo));
+                imageList3.Images.Add(bms.ByteToBmp(peo.Token2D_AttrOne));
+                imageList3.Images.Add(bms.ByteToBmp(peo.Token2D_AttrTwo));
+
+
+                    ListViewItem listViewItem1 = new ListViewItem("Code part: 1D RealCodeImage", 0);
+                    ListViewItem listViewItem2 = new ListViewItem("Code part: 1D ImaginaryCodeImage", 1);
+                    ListViewItem listViewItem3 = new ListViewItem("Code part: 2D RealCodeImage", 2);
+                    ListViewItem listViewItem4 = new ListViewItem("Code part: 2D ImaginaryCodeImage", 3);
+
+                    listViewItem1.Tag = peo.id;
+                    listViewItem2.Tag = peo.id;
+                    listViewItem3.Tag = peo.id;
+                    listViewItem4.Tag = peo.id;
+                    listView3.Items.Add(listViewItem1);
+                    listView3.Items.Add(listViewItem2);
+                    listView3.Items.Add(listViewItem3);
+                    listView3.Items.Add(listViewItem4);
+                listView3.EndUpdate();
+
+
+
+            }
+
         }
 
 

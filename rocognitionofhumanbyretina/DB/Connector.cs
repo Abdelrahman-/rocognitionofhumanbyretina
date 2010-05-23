@@ -66,6 +66,33 @@ namespace rocognitionofhumanbyretina.DB
             db.Connection.Close();
             return tempHumanStorage;
         }
+
+        public Peoples GetImagesDataByHumanID(int id)
+        {
+
+            // Use a connection string.
+            DataContext db = new DataContext(System.Windows.Forms.Application.StartupPath + "\\resources\\PeopleDB.mdf");
+
+            // Get a typed table to run queries.
+            Table<Peoples> peo = db.GetTable<Peoples>();
+
+            IQueryable<Peoples> custQuery =
+            from cust in peo
+            where cust.id == id
+            select cust;
+            int i = 0;
+            Peoples tempPeoplesStorage = new Peoples();
+            foreach (Peoples cust in custQuery)
+            {
+                tempPeoplesStorage = cust;
+                custQuery.GetEnumerator().MoveNext();
+                i++;
+            }
+            db.Connection.Close();
+            return tempPeoplesStorage;
+        }
+
+
         public Human GetHumansInfoBySecondName(string secondName)
         {
 

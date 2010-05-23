@@ -65,9 +65,8 @@
             this.peopleDBDataSet = new rocognitionofhumanbyretina.resources.PeopleDBDataSet();
             this.humanBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.listView3 = new System.Windows.Forms.ListView();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.testBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -79,8 +78,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.humanBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // closeButton
@@ -142,6 +139,7 @@
             this.listView2.Size = new System.Drawing.Size(311, 128);
             this.listView2.TabIndex = 6;
             this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -389,38 +387,30 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Location = new System.Drawing.Point(227, 381);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(100, 93);
-            this.pictureBox3.TabIndex = 9;
-            this.pictureBox3.TabStop = false;
-            // 
             // listView3
             // 
-            this.listView3.Location = new System.Drawing.Point(12, 395);
+            this.listView3.Location = new System.Drawing.Point(840, 27);
             this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(189, 145);
-            this.listView3.TabIndex = 10;
+            this.listView3.Size = new System.Drawing.Size(234, 278);
+            this.listView3.TabIndex = 9;
             this.listView3.UseCompatibleStateImageBehavior = false;
             // 
-            // pictureBox4
+            // label9
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(356, 371);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(100, 103);
-            this.pictureBox4.TabIndex = 11;
-            this.pictureBox4.TabStop = false;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(846, 14);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(90, 13);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "Коды по Габору:";
             // 
             // DbForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(868, 552);
-            this.Controls.Add(this.pictureBox4);
+            this.ClientSize = new System.Drawing.Size(1086, 552);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.listView3);
-            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -444,8 +434,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.humanBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -492,8 +480,7 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.ListView listView3;
-        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label label9;
     }
 }
