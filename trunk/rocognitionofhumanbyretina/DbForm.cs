@@ -162,11 +162,10 @@ namespace rocognitionofhumanbyretina
                 eyeType = EyeTypes.LEFT;
             else
                 eyeType = EyeTypes.RIGHT;
-
-            Gabor2D gabor = new Gabor2D();
-            gabor.PrepareImage(imageSecond as Bitmap);
-            gabor.CalculateKernel1D(gabor.Image, 0, 30, imageSecond.Width, imageSecond.Height);
-            gabor.CalculateKernel2D(gabor.Image, 0, 30, imageSecond.Width, imageSecond.Height);
+            Gabor1D gabor1d = new Gabor1D(imageSecond as Bitmap);
+            Gabor2D gabor2d = new Gabor2D(imageSecond as Bitmap);
+            gabor1d.CalculateKernel1D(gabor1d.Image, 0, 30, imageSecond.Width, imageSecond.Height);
+            gabor2d.CalculateKernel2D(gabor2d.Image, 0, 30, imageSecond.Width, imageSecond.Height);
             //GaborResult gabor2dResult = gabor2d.GaborTransform(new Bitmap(imageSecond));
 
             byte[] gabor1dRe = new byte[imageSecond.Width * imageSecond.Height];
@@ -178,10 +177,10 @@ namespace rocognitionofhumanbyretina
             {
                 for (int j = 0; j < imageSecond.Height; j++,k++)
                 {
-                    gabor1dRe[k] = gabor.GaborRealCodeArray1D[i, j];
-                    gabor1dIm[k] = gabor.GaborImCodeArray1D[i, j];
-                    gabor2dRe[k] = gabor.GaborRealCodeArray2D[i, j];
-                    gabor2dIm[k] = gabor.GaborImCodeArray2D[i, j];
+                    gabor1dRe[k] = gabor1d.GaborRealCodeArray1D[i, j];
+                    gabor1dIm[k] = gabor1d.GaborImCodeArray1D[i, j];
+                    gabor2dRe[k] = gabor2d.GaborRealCodeArray2D[i, j];
+                    gabor2dIm[k] = gabor2d.GaborImCodeArray2D[i, j];
                 }
             }
 
