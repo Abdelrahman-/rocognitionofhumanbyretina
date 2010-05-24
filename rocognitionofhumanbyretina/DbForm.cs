@@ -12,6 +12,10 @@ using rocognitionofhumanbyretina.common.enums;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Data.Linq;
+using System.Data.Linq.Mapping;
+using System.Linq;
+
 
 namespace rocognitionofhumanbyretina
 {
@@ -34,7 +38,8 @@ namespace rocognitionofhumanbyretina
             Connector cn = new Connector();
 
             List<Human> humans = cn.GetAllHumansInfo();
-
+            this.comboBox1.Items.Clear();
+            this.comboBox2.Items.Clear();
             for (int i = 0; i < humans.Count; i++)
             {
                 if (i < humans.Count - 1)
@@ -121,6 +126,59 @@ namespace rocognitionofhumanbyretina
                 }
 
                 listView2.EndUpdate();
+            }
+            else if (e.ColumnIndex == 4) //Assuming the button column as second column, if not can change the index
+            {
+                // Use a connection string.
+                DataContext db = new DataContext(System.Windows.Forms.Application.StartupPath + "\\resources\\PeopleDB.mdf");
+
+                // Get a typed table to run queries.
+                Table<Peoples> peo = db.GetTable<Peoples>();
+                Table<Human> hum = db.GetTable<Human>();
+                
+                IQueryable<Peoples> custQuery =
+                from cust in peo
+                where cust.HumanId == Int32.Parse(dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex-1].Tag.ToString())
+                select cust;
+
+                //foreach (Peoples cust in custQuery)
+                //{
+                //    peo.DeleteOnSubmit(cust);
+                //}
+                db.ExecuteCommand("delete from Peoples where Peoples.HumanID=" + dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Tag.ToString());
+                db.SubmitChanges();
+
+                IQueryable<Human> humQuery =
+                from h in hum
+                where h.HumanId == Int32.Parse(dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex-1].Tag.ToString())
+                select h;
+
+                foreach (Human hu in humQuery)
+                {
+                    hum.DeleteOnSubmit(hu);
+                }
+                db.SubmitChanges();
+
+                dataGridView2.Rows.Clear();
+
+                Connector cn = new Connector();
+
+                List<Human> humans = cn.GetAllHumansInfo();
+                this.comboBox1.Items.Clear();
+                this.comboBox2.Items.Clear();
+                for (int i = 0; i < humans.Count; i++)
+                {
+                    if (i < humans.Count - 1)
+                        this.dataGridView2.Rows.Add(1);
+                    this.dataGridView2.Rows[i].Cells[0].Value = humans[i].Name;
+                    this.dataGridView2.Rows[i].Cells[1].Value = humans[i].SecondName;
+                    this.dataGridView2.Rows[i].Cells[2].Value = humans[i].SurName;
+                    this.dataGridView2.Rows[i].Cells[3].Tag = humans[i].HumanId;
+                    this.comboBox1.Items.Add(humans[i].HumanId);
+                    this.comboBox2.Items.Add(cn.GetHumansInfo(humans[i].HumanId).SecondName);
+                }
+
+                db.Connection.Close();
             }
         }
 
@@ -216,6 +274,25 @@ namespace rocognitionofhumanbyretina
         {
             Connector con = new Connector();
             con.addNewHumanToDB(textBox1.Text, textBox2.Text, textBox3.Text);
+
+            dataGridView2.Rows.Clear();
+
+            Connector cn = new Connector();
+
+            List<Human> humans = cn.GetAllHumansInfo();
+            this.comboBox1.Items.Clear();
+            this.comboBox2.Items.Clear();
+            for (int i = 0; i < humans.Count; i++)
+            {
+                if (i < humans.Count - 1)
+                    this.dataGridView2.Rows.Add(1);
+                this.dataGridView2.Rows[i].Cells[0].Value = humans[i].Name;
+                this.dataGridView2.Rows[i].Cells[1].Value = humans[i].SecondName;
+                this.dataGridView2.Rows[i].Cells[2].Value = humans[i].SurName;
+                this.dataGridView2.Rows[i].Cells[3].Tag = humans[i].HumanId;
+                this.comboBox1.Items.Add(humans[i].HumanId);
+                this.comboBox2.Items.Add(cn.GetHumansInfo(humans[i].HumanId).SecondName);
+            }
         }
 
         private void listView2_SelectedIndexChanged(object sender, EventArgs e)

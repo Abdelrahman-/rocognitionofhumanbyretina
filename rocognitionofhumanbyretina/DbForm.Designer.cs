@@ -67,6 +67,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.listView3 = new System.Windows.Forms.ListView();
             this.label9 = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.testBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -82,7 +83,7 @@
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(12, 330);
+            this.closeButton.Location = new System.Drawing.Point(12, 529);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 23);
             this.closeButton.TabIndex = 1;
@@ -97,10 +98,11 @@
             this.Имя,
             this.Фамилия,
             this.Отчество,
-            this.Показать_глаза});
+            this.Показать_глаза,
+            this.Column1});
             this.dataGridView2.Location = new System.Drawing.Point(12, 28);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(444, 277);
+            this.dataGridView2.Size = new System.Drawing.Size(547, 277);
             this.dataGridView2.TabIndex = 4;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -126,7 +128,7 @@
             // 
             // listView1
             // 
-            this.listView1.Location = new System.Drawing.Point(512, 28);
+            this.listView1.Location = new System.Drawing.Point(590, 28);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(311, 122);
             this.listView1.TabIndex = 5;
@@ -134,7 +136,7 @@
             // 
             // listView2
             // 
-            this.listView2.Location = new System.Drawing.Point(512, 177);
+            this.listView2.Location = new System.Drawing.Point(590, 177);
             this.listView2.Name = "listView2";
             this.listView2.Size = new System.Drawing.Size(311, 128);
             this.listView2.TabIndex = 6;
@@ -144,7 +146,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(509, 12);
+            this.label1.Location = new System.Drawing.Point(587, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 7;
@@ -153,7 +155,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(509, 161);
+            this.label2.Location = new System.Drawing.Point(587, 161);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 8;
@@ -162,7 +164,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.tabControl1);
-            this.groupBox1.Location = new System.Drawing.Point(512, 311);
+            this.groupBox1.Location = new System.Drawing.Point(12, 311);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(311, 219);
             this.groupBox1.TabIndex = 0;
@@ -389,20 +391,25 @@
             // 
             // listView3
             // 
-            this.listView3.Location = new System.Drawing.Point(840, 27);
+            this.listView3.Location = new System.Drawing.Point(590, 330);
             this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(234, 278);
+            this.listView3.Size = new System.Drawing.Size(311, 181);
             this.listView3.TabIndex = 9;
             this.listView3.UseCompatibleStateImageBehavior = false;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(846, 14);
+            this.label9.Location = new System.Drawing.Point(587, 314);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(90, 13);
             this.label9.TabIndex = 10;
             this.label9.Text = "Коды по Габору:";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Удалить запись вместе с изображениями";
+            this.Column1.Name = "Column1";
             // 
             // DbForm
             // 
@@ -482,5 +489,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ListView listView3;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridViewButtonColumn Column1;
     }
 }
