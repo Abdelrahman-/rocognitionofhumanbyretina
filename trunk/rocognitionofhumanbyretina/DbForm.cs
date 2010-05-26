@@ -62,72 +62,64 @@ namespace rocognitionofhumanbyretina
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 3) //Assuming the button column as second column, if not can change the index
+            if (e.ColumnIndex == 3 && e.RowIndex >= 0) //Assuming the button column as second column, if not can change the index
             {
-                //check if anything needs to be validated here
-                BitmapService bmpServ = new BitmapService();
+                    //check if anything needs to be validated here
+                    BitmapService bmpServ = new BitmapService();
 
-                byte[] imageBytes = null;
-                Image tempImage = null;
+                    byte[] imageBytes = null;
+                    Image tempImage = null;
 
-                Connector cn = new Connector();
+                    Connector cn = new Connector();
 
-                List<Peoples> peoples = cn.ConnectLinqDBInterface();
-                Human human = cn.GetHumansInfo(Int32.Parse(dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag.ToString()));
+                    List<Peoples> peoples = cn.ConnectLinqDBInterface();
+                    Human human = cn.GetHumansInfo(Int32.Parse(dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex].Tag.ToString()));
 
-                ImageList imageList1 = new ImageList();
-                imageList1.ImageSize = new Size(100, 100);
-                imageList1.Images.Clear();
+                    ImageList imageList1 = new ImageList();
+                    imageList1.ImageSize = new Size(100, 100);
+                    imageList1.Images.Clear();
 
-                listView1.Items.Clear();
-                listView1.LargeImageList = imageList1;
-                listView1.BeginUpdate();
+                    listView1.Items.Clear();
+                    listView1.LargeImageList = imageList1;
+                    listView1.BeginUpdate();
 
-                for (int i = 0; i < human.Peoples.Count; i++)
-                {
-                    imageBytes = (byte[])human.Peoples[i].ImageFull;
-                    tempImage = bmpServ.ByteToBmp(imageBytes);
+                    for (int i = 0; i < human.Peoples.Count; i++)
+                    {
+                        imageBytes = (byte[])human.Peoples[i].ImageFull;
+                        tempImage = bmpServ.ByteToBmp(imageBytes);
 
-                    imageList1.Images.Add((Image)tempImage);
+                        imageList1.Images.Add((Image)tempImage);
 
-                    ListViewItem listViewItem = new ListViewItem("Eye Picture: " + human.Peoples[i].EyeType + "\n "
-                        + human.Peoples[i].Token1D_AttrOne + "\n " +
-                        human.Peoples[i].Token1D_AttrTwo + "\n " +
-                        human.Peoples[i].Token2D_AttrOne + "\n " +
-                        human.Peoples[i].Token2D_AttrTwo + "\n ", i);
-                    listViewItem.Tag = human.Peoples[i].id;
-                    listView1.Items.Add(listViewItem);
-                }
+                        ListViewItem listViewItem = new ListViewItem("Eye Picture: " + human.Peoples[i].EyeType + "\n ", i);
+                        listViewItem.Tag = human.Peoples[i].id;
+                        listView1.Items.Add(listViewItem);
+                    }
 
-                listView1.EndUpdate();
+                    listView1.EndUpdate();
 
-                ImageList imageList2 = new ImageList();
-                imageList2.ImageSize = new Size(100, 100);
-                imageList2.Images.Clear();
+                    ImageList imageList2 = new ImageList();
+                    imageList2.ImageSize = new Size(100, 100);
+                    imageList2.Images.Clear();
 
-                listView2.Items.Clear();
-                listView2.LargeImageList = imageList2;
-                listView2.BeginUpdate();
+                    listView2.Items.Clear();
+                    listView2.LargeImageList = imageList2;
+                    listView2.BeginUpdate();
 
-                for (int i = 0; i < human.Peoples.Count; i++)
-                {
-                    imageBytes = (byte[])human.Peoples[i].ImagePart;
-                    tempImage = bmpServ.ByteToBmp(imageBytes);
-                    imageList2.Images.Add((Image)tempImage);
+                    for (int i = 0; i < human.Peoples.Count; i++)
+                    {
+                        imageBytes = (byte[])human.Peoples[i].ImagePart;
+                        tempImage = bmpServ.ByteToBmp(imageBytes);
+                        imageList2.Images.Add((Image)tempImage);
 
-                    ListViewItem listViewItem = new ListViewItem("Part of Eye Picture: " + human.Peoples[i].EyeType + "\n "
-                        + human.Peoples[i].Token1D_AttrOne + "\n " +
-                        human.Peoples[i].Token1D_AttrTwo + "\n " +
-                        human.Peoples[i].Token2D_AttrOne + "\n " +
-                        human.Peoples[i].Token2D_AttrTwo + "\n ", i);
-                    listViewItem.Tag = human.Peoples[i].id;
-                    listViewItem.Tag = human.Peoples[i].id;
-                    listView2.Items.Add(listViewItem);
-                }
+                        ListViewItem listViewItem = new ListViewItem("Part of Eye Picture: " + human.Peoples[i].EyeType + "\n ", i);
+                        listViewItem.Tag = human.Peoples[i].id;
+                        listViewItem.Tag = human.Peoples[i].id;
+                        listView2.Items.Add(listViewItem);
+                    }
 
-                listView2.EndUpdate();
+                    listView2.EndUpdate();
             }
-            else if (e.ColumnIndex == 4) //Assuming the button column as second column, if not can change the index
+            else if (e.ColumnIndex == 4 && e.RowIndex >= 0) //Assuming the button column as second column, if not can change the index
             {
                 // Use a connection string.
                 DataContext db = new DataContext(System.Windows.Forms.Application.StartupPath + "\\resources\\PeopleDB.mdf");

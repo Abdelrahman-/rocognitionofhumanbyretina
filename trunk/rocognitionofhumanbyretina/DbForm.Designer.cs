@@ -37,6 +37,7 @@
             this.Фамилия = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Отчество = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Показать_глаза = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.listView1 = new System.Windows.Forms.ListView();
             this.listView2 = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
@@ -67,7 +68,6 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.listView3 = new System.Windows.Forms.ListView();
             this.label9 = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.testBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -83,7 +83,7 @@
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(12, 529);
+            this.closeButton.Location = new System.Drawing.Point(826, 517);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 23);
             this.closeButton.TabIndex = 1;
@@ -125,6 +125,11 @@
             // 
             this.Показать_глаза.HeaderText = "Показать изображения глаз";
             this.Показать_глаза.Name = "Показать_глаза";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Удалить запись вместе с изображениями";
+            this.Column1.Name = "Column1";
             // 
             // listView1
             // 
@@ -406,16 +411,11 @@
             this.label9.TabIndex = 10;
             this.label9.Text = "Коды по Габору:";
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Удалить запись вместе с изображениями";
-            this.Column1.Name = "Column1";
-            // 
             // DbForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1086, 552);
+            this.ClientSize = new System.Drawing.Size(923, 552);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.listView3);
             this.Controls.Add(this.groupBox1);

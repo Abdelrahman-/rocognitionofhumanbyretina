@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using rocognitionofhumanbyretina.DB;
+using rocognitionofhumanbyretina.common;
+using rocognitionofhumanbyretina.common.enums;
 
 namespace rocognitionofhumanbyretina
 {
@@ -129,52 +131,33 @@ namespace rocognitionofhumanbyretina
             graphForm.Show();
         }
 
-        //private void button1_Click_1(object sender, EventArgs e)
-        //{
-        //    Gabor2D gab = new Gabor2D();
+        private void startButton_Click_1(object sender, EventArgs e)
+        {
+            GaborTypes type = GaborTypes.WAVELET1D;
 
-        //    //int[,] testIm = {{12,23,56,122,221,13,14,89,159,243},
-        //    //                {12,23,56,122,0,13,14,89,0,243},
-        //    //                {12,23,56,0,221,13,14,89,159,243},
-        //    //                {12,23,56,122,0,13,14,89,0,243},
-        //    //                {12,23,56,122,221,13,14,89,159,243},
-        //    //                {12,0,56,122,221,13,14,89,159,243},
-        //    //                {12,23,56,0,221,13,14,89,159,0},
-        //    //                {12,23,56,122,221,13,14,89,159,243},
-        //    //                {12,23,56,122,221,13,14,89,159,0},
-        //    //                {12,23,56,122,0,13,14,89,0,243},
-        //    //                {12,23,56,122,221,13,14,89,159,243},};
+            if (radioButton1D.Checked)
+            {
+                type = GaborTypes.WAVELET1D;
+            }
+            else if (radioButton2D.Checked)
+            {
+                type = GaborTypes.WAVELET2D;
+            }
 
+            if (pictureBoxMain.Image == null)
+            {
+                MessageBox.Show("Не выбран шаблон!");
+            }
+            else
+            {
+                Recognification recognif = new Recognification();
+                Peoples people = recognif.start(type, new Bitmap(pictureBoxMain.Image));
 
-        //    int[,] testIm = {{0,0,0,0,255,0,0,0,0,0},
-        //                    {0,0,0,0,255,0,0,0,0,0},
-        //                    {0,0,0,0,255,0,0,0,0,0},
-        //                    {0,0,0,0,255,0,0,0,0,0},
-        //                   {0,0,0,0,0,255,0,0,0,0},
-        //                    {255,255,255,255,255,255,255,255,255,255},
-        //                    {0,0,0,0,255,0,0,0,0,0},
-        //                    {0,0,0,0,255,0,0,0,0,0},
-        //                    {0,0,0,0,255,0,0,0,0,0},
-        //                   {0,0,0,0,0,255,0,0,0,0},
-        //                   {0,0,0,0,0,255,0,0,0,0},};
+                Connector cn = new Connector();
+                Human hm = cn.GetHumansInfo(people.HumanId);
 
-
-        //    int[,] arr=gab.CalculateKernel1D(testIm,0,0,10,10);
-        //    int[,] arrSec = gab.CalculateKernel2D(testIm, 0, 0, 10, 10);
-        //    //for (int i = 0; i < 10;i++ )
-        //    //    dataGridView1.Columns.Add(new DataGridViewColumn());
-        //        for (int i = 0; i < 10; i++)
-        //        {
-        //            dataGridView1.Rows.Add(1);
-        //            dataGridView2.Rows.Add(1);
-        //            for (int j = 0; j < 10; j++)
-        //            {
-        //                //if (i == 0)
-                            
-        //                dataGridView1.Rows[i].Cells[j].Value = arr[i, j];
-        //                dataGridView2.Rows[i].Cells[j].Value = arrSec[i, j];
-        //            }
-        //        }
-        //}
+                MessageBox.Show("Наиболее вероятно, что этот глаз пренадлежит: \n" + hm.Name + " " + hm.SurName + " " + hm.SecondName);
+            }
+        }
     }
 }
