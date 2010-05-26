@@ -64,22 +64,22 @@ class Gabor1D : Gabor
                     }
                 }
 
-                if (integralReal >= 0)
+                if (integralReal > 0)
                 {
                     bitReal = 1;
                 }
-                else if (integralReal < 0)
+                else if (integralReal <= 0)
                 {
                     bitReal = 0;
                 }
 
                 codeArrayReal[i, j] = bitReal;
 
-                if (integralIma >= 0)
+                if (integralIma > 0)
                 {
                     bitIm = 1;
                 }
-                else if (integralIma < 0)
+                else if (integralIma <= 0)
                 {
                     bitIm = 0;
                 }

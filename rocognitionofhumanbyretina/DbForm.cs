@@ -21,6 +21,7 @@ namespace rocognitionofhumanbyretina
 {
     public partial class DbForm : Form
     {
+        private List<Image> SelectedForCompareItems=new List<Image>();
 
         public DbForm()
         {
@@ -216,8 +217,8 @@ namespace rocognitionofhumanbyretina
                 eyeType = EyeTypes.RIGHT;
             Gabor1D gabor1d = new Gabor1D(imageSecond as Bitmap);
             Gabor2D gabor2d = new Gabor2D(imageSecond as Bitmap);
-            gabor1d.CalculateKernel1D(gabor1d.Image, 45, 10, imageSecond.Width, imageSecond.Height);
-            gabor2d.CalculateKernel2D(gabor2d.Image, 45, 10, imageSecond.Width, imageSecond.Height);
+            gabor1d.CalculateKernel1D(gabor1d.Image, 80, 5, imageSecond.Width, imageSecond.Height);
+            gabor2d.CalculateKernel2D(gabor2d.Image, 80, 5, imageSecond.Width, imageSecond.Height);
             //GaborResult gabor2dResult = gabor2d.GaborTransform(new Bitmap(imageSecond));
 
             Image gabor1dRe=new Bitmap(gabor1d.GaborRealCodeArray1D);
@@ -242,22 +243,8 @@ namespace rocognitionofhumanbyretina
             byte[] bArrFour = null;
             gabor2dIm.Save(msFour, ImageFormat.Jpeg);
             bArrFour = msFour.GetBuffer();
-
-
-            //for (int i = 0,k=0; i < imageSecond.Width; i++)
-            //{
-            //    for (int j = 0; j < imageSecond.Height; j++,k++)
-            //    {
-            //        gabor1dRe[k] = gabor1d.GaborRealCodeArray1D[i, j];
-            //        gabor1dIm[k] = gabor1d.GaborImCodeArray1D[i, j];
-            //        gabor2dRe[k] = gabor2d.GaborRealCodeArray2D[i, j];
-            //        gabor2dIm[k] = gabor2d.GaborImCodeArray2D[i, j];
-            //    }
-            //}
-
-
             con.addNewHumanInfoToDB(Int32.Parse(comboBox1.Text), imageFirst, imageSecond, bArrOne, bArrTwo,
-                    bArrThree, bArrFour, eyeType.ToString());
+                            bArrThree, bArrFour, eyeType.ToString());
 
             MessageBox.Show("Added new eye");
         }
@@ -331,6 +318,48 @@ namespace rocognitionofhumanbyretina
 
             }
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (SelectedForCompareItems.Count == 2)
+                {
+                    MessageBox.Show("Внимание! Сравнивать можно только по два изображения! Выберите два изображения заново и сравните их!");
+                    SelectedForCompareItems.Clear();
+                }
+                SelectedForCompareItems.Add(listView3.SelectedItems[0].ImageList.Images[listView3.SelectedItems[0].Index]);
+                MessageBox.Show("Изображение добавлено!");
+            }
+            catch (Exception exc)
+            {
+                //-=-
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ImageComparisonForm icf = new ImageComparisonForm();
+            icf.Activate();
+            icf.Show();
+
+
+            icf.GetFirstListBox.Items.Clear();
+            icf.GetSecondListBox.Items.Clear();
+            for (int i = 0; i < 250; i++)
+            {
+                icf.GetFirstListBox.Items.Add("");
+                icf.GetSecondListBox.Items.Add("");
+                for (int j = 0; j < 50; j++)
+                {
+
+                    icf.GetFirstListBox.Items[i] = icf.GetFirstListBox.Items[i] + ((SelectedForCompareItems[0] as Bitmap).GetPixel(i, j).R / 255).ToString() + " ";
+
+                    
+                    icf.GetSecondListBox.Items[i] = icf.GetSecondListBox.Items[i] + ((SelectedForCompareItems[1] as Bitmap).GetPixel(i, j).R / 255).ToString() + " ";
+                }
+            }
         }
 
 
