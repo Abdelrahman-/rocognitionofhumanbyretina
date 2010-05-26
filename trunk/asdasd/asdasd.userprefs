@@ -1,0 +1,22 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" ctype="Workspace" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="asdasd/MainWindow.cs" ctype="Workbench">
+    <Files>
+      <File FileName="asdasd/Main.cs" Line="13" Column="23" />
+      <File FileName="asdasd/MainForm.cs" Line="14" Column="4" />
+      <File FileName="asdasd/MainWindow.cs" Line="2" Column="7" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="asdasd" expanded="True">
+            <Node name="References" expanded="True" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+</Properties>
