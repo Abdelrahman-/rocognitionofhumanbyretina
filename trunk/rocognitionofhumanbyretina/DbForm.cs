@@ -217,8 +217,8 @@ namespace rocognitionofhumanbyretina
                 eyeType = EyeTypes.RIGHT;
             Gabor1D gabor1d = new Gabor1D(imageSecond as Bitmap);
             Gabor2D gabor2d = new Gabor2D(imageSecond as Bitmap);
-            gabor1d.CalculateKernel1D(gabor1d.Image, 80, 5, imageSecond.Width, imageSecond.Height);
-            gabor2d.CalculateKernel2D(gabor2d.Image, 80, 5, imageSecond.Width, imageSecond.Height);
+            gabor1d.CalculateKernel1D(gabor1d.Image, 15, 1, imageSecond.Width, imageSecond.Height);
+            gabor2d.CalculateKernel2D(gabor2d.Image, 10, 5, imageSecond.Width, imageSecond.Height);
             //GaborResult gabor2dResult = gabor2d.GaborTransform(new Bitmap(imageSecond));
 
             Image gabor1dRe=new Bitmap(gabor1d.GaborRealCodeArray);
