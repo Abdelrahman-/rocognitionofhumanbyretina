@@ -27,6 +27,11 @@ namespace rocognitionofhumanbyretina.common
             return bmp;
         }
 
+        public byte[] bmpToByte(Image image)
+        {
+            return bmpToByte(new Bitmap(image));
+        }
+
         public byte[] bmpToByte(Bitmap image)
         {
             MemoryStream memoryStream = new MemoryStream();
@@ -37,6 +42,11 @@ namespace rocognitionofhumanbyretina.common
         public Bitmap ByteToBmp(byte[] imgByteArray)
         {
             return new Bitmap(new MemoryStream(imgByteArray));
+        }
+
+        public double HD(byte[] image1, byte[] image2)
+        {
+            return HD(ByteToBmp(image1), ByteToBmp(image2));
         }
 
         public double HD(Bitmap image1, Bitmap image2)
