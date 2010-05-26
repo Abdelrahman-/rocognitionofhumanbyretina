@@ -334,7 +334,7 @@ namespace rocognitionofhumanbyretina
             }
             catch (Exception exc)
             {
-                //-=-
+                MessageBox.Show("Выберите пожалуйста шаблон сперва, затем второй - и нажмите кнопку 'Сравнить изображения'!");
             }
         }
 
