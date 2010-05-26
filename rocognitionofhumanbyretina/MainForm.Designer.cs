@@ -33,6 +33,9 @@
             this.openButton = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.dbButton = new System.Windows.Forms.Button();
+            this.startButton = new System.Windows.Forms.Button();
+            this.radioButton1D = new System.Windows.Forms.RadioButton();
+            this.radioButton2D = new System.Windows.Forms.RadioButton();
             this.graphButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
             this.SuspendLayout();
@@ -63,7 +66,7 @@
             // 
             // openButton
             // 
-            this.openButton.Location = new System.Drawing.Point(332, 41);
+            this.openButton.Location = new System.Drawing.Point(332, 12);
             this.openButton.Name = "openButton";
             this.openButton.Size = new System.Drawing.Size(86, 23);
             this.openButton.TabIndex = 2;
@@ -86,6 +89,38 @@
             this.dbButton.UseVisualStyleBackColor = true;
             this.dbButton.Click += new System.EventHandler(this.dbButton_Click);
             // 
+            // startButton
+            // 
+            this.startButton.Location = new System.Drawing.Point(332, 98);
+            this.startButton.Name = "startButton";
+            this.startButton.Size = new System.Drawing.Size(86, 25);
+            this.startButton.TabIndex = 9;
+            this.startButton.Text = "Распознать";
+            this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click_1);
+            // 
+            // radioButton1D
+            // 
+            this.radioButton1D.AutoSize = true;
+            this.radioButton1D.Checked = true;
+            this.radioButton1D.Location = new System.Drawing.Point(332, 41);
+            this.radioButton1D.Name = "radioButton1D";
+            this.radioButton1D.Size = new System.Drawing.Size(39, 17);
+            this.radioButton1D.TabIndex = 10;
+            this.radioButton1D.TabStop = true;
+            this.radioButton1D.Text = "1D";
+            this.radioButton1D.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2D
+            // 
+            this.radioButton2D.AutoSize = true;
+            this.radioButton2D.Location = new System.Drawing.Point(332, 71);
+            this.radioButton2D.Name = "radioButton2D";
+            this.radioButton2D.Size = new System.Drawing.Size(39, 17);
+            this.radioButton2D.TabIndex = 11;
+            this.radioButton2D.Text = "2D";
+            this.radioButton2D.UseVisualStyleBackColor = true;
+            // 
             // graphButton
             // 
             this.graphButton.Location = new System.Drawing.Point(332, 193);
@@ -94,13 +129,17 @@
             this.graphButton.TabIndex = 8;
             this.graphButton.Text = "График";
             this.graphButton.UseVisualStyleBackColor = true;
+            this.graphButton.Visible = false;
             this.graphButton.Click += new System.EventHandler(this.graphButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(424, 271);
+            this.ClientSize = new System.Drawing.Size(447, 277);
+            this.Controls.Add(this.radioButton2D);
+            this.Controls.Add(this.radioButton1D);
+            this.Controls.Add(this.startButton);
             this.Controls.Add(this.graphButton);
             this.Controls.Add(this.dbButton);
             this.Controls.Add(this.openButton);
@@ -110,6 +149,7 @@
             this.Text = "Курсовой проект, Хоружий С.В., Труш А.С.";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -120,6 +160,9 @@
         private System.Windows.Forms.Button openButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.Button dbButton;
+        private System.Windows.Forms.Button startButton;
+        private System.Windows.Forms.RadioButton radioButton1D;
+        private System.Windows.Forms.RadioButton radioButton2D;
         private System.Windows.Forms.Button graphButton;
     }
 }

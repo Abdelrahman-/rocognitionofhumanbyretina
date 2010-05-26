@@ -21,13 +21,6 @@ using System.Drawing;
             get { return image; }
         }
 
-        public GaborResult GaborTransform(Bitmap img)
-        {
-            PrepareImage(img);
-            GaborResult result = new GaborResult();
-            return result;
-        }
-
         public void PrepareImage(Bitmap bmp)
         {
             image = new byte[bmp.Height, bmp.Width];
