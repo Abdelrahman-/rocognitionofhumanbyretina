@@ -8,18 +8,6 @@ using rocognitionofhumanbyretina.common;
 
 class Gabor1D : Gabor
 {
-    private Bitmap gaborRealCodeArray1D;
-    private Bitmap gaborImCodeArray1D;
-
-    public Image GaborRealCodeArray1D
-    {
-        get { return gaborRealCodeArray1D; }
-    }
-    public Image GaborImCodeArray1D
-    {
-        get { return gaborImCodeArray1D; }
-    }
-
     public Gabor1D(Bitmap bmp)
         : base(bmp)
     {
@@ -27,8 +15,6 @@ class Gabor1D : Gabor
 
     public void CalculateKernel1D(byte[,] im, int Orientation, int Frequency, int width, int height)
     {
-        Init();
-
         double real, img;
         byte bitIm = 0, bitReal = 0;
         double integralReal = 0;
@@ -37,7 +23,6 @@ class Gabor1D : Gabor
         byte[,] codeArrayReal = new byte[width, height];
         byte[,] codeArrayIma = new byte[width, height];
         int k = 0;
-        int length = (GaborWidth - 1) * GaborHeight;
 
         for (int x = 0, i = 0; i < width; i++)
             for (int j = 0; j < height; j++, x++)
@@ -85,8 +70,8 @@ class Gabor1D : Gabor
                 }
                 codeArrayIma[i, j] = bitIm;
             }
-        gaborRealCodeArray1D = BitmapService.ByteToBmp(codeArrayReal);
-        gaborImCodeArray1D = BitmapService.ByteToBmp(codeArrayIma);
+        gaborRealCodeArray = BitmapService.ByteToBmp(codeArrayReal);
+        gaborImCodeArray = BitmapService.ByteToBmp(codeArrayIma);
     }
 
     private double KernelRealPart1D(int x, int Orientation, int Frequency)

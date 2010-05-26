@@ -29,7 +29,7 @@ namespace rocognitionofhumanbyretina.common
 
                 for (int i = 0; i < peoples.Count; i++)
                 {
-                    double lenght = bmpService.HD(new Bitmap(gabor.GaborRealCodeArray1D), bmpService.ByteToBmp(peoples[i].Token1D_AttrOne));
+                    double lenght = bmpService.HD(new Bitmap(gabor.GaborRealCodeArray), bmpService.ByteToBmp(peoples[i].Token1D_AttrOne));
                     if (lenght < min)
                     {
                         min = lenght;
@@ -44,7 +44,7 @@ namespace rocognitionofhumanbyretina.common
 
                 for (int i = 0; i < peoples.Count; i++)
                 {
-                    double lenght = bmpService.HD(new Bitmap(gabor.GaborRealCodeArray2D), bmpService.ByteToBmp(peoples[i].Token2D_AttrOne));
+                    double lenght = bmpService.HD(new Bitmap(gabor.GaborRealCodeArray), bmpService.ByteToBmp(peoples[i].Token2D_AttrOne));
                     if (lenght < min)
                     {
                         min = lenght;

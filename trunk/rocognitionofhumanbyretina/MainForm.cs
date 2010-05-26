@@ -14,8 +14,8 @@ namespace rocognitionofhumanbyretina
 {
     public partial class MainForm : Form
     {
-        private DbForm dbForm = new DbForm();
-        private GraphForm graphForm = new GraphForm();
+        private DbForm dbForm = null;
+        private GraphForm graphForm = null;
 
         private Connector dbConnector;
 
@@ -96,8 +96,10 @@ namespace rocognitionofhumanbyretina
 
         private void dbButton_Click(object sender, EventArgs e)
         {
-
-            dbForm = new DbForm();
+            if (dbForm == null)
+            {
+                dbForm = new DbForm();
+            }
             dbForm.Activate();
             dbForm.Show();
         }
@@ -111,23 +113,19 @@ namespace rocognitionofhumanbyretina
         {
             Connector cn = new Connector();
             cn.ConnectLinqDBInterface();
-
-            // Attach the log to show generated SQL.
-            //db.Log = Console.Out;
-
-            // Query for customers in London.
-
-
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             Connector cn = new Connector();
-            //cn.AddRecordLinqToSQL();
         }
 
         private void graphButton_Click(object sender, EventArgs e)
         {
+            if (graphForm == null)
+            {
+                graphForm = new GraphForm();
+            }
             graphForm.Show();
         }
 

@@ -60,7 +60,7 @@
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(86, 23);
             this.closeButton.TabIndex = 1;
-            this.closeButton.Text = "Закрыть";
+            this.closeButton.Text = "Выход";
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
@@ -129,7 +129,6 @@
             this.graphButton.TabIndex = 8;
             this.graphButton.Text = "График";
             this.graphButton.UseVisualStyleBackColor = true;
-            this.graphButton.Visible = false;
             this.graphButton.Click += new System.EventHandler(this.graphButton_Click);
             // 
             // MainForm

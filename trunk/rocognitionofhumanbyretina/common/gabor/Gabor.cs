@@ -7,9 +7,18 @@ using System.Drawing;
     abstract public class Gabor
     {
         protected byte[,] image;
-        protected int GaborWidth = 101, GaborHeight = 101;
 
-        protected double[,] KernelRealData, KernelImgData;
+        protected Bitmap gaborRealCodeArray;
+        protected Bitmap gaborImCodeArray;
+
+        public Image GaborRealCodeArray
+        {
+            get { return gaborRealCodeArray; }
+        }
+        public Image GaborImCodeArray
+        {
+            get { return gaborImCodeArray; }
+        }
 
         public Gabor(Bitmap bmp)
         {
@@ -38,12 +47,6 @@ using System.Drawing;
             if (gray > 255) gray = 255;
 
             return gray;
-        }
-
-        public void Init()
-        {
-            KernelRealData = new double[GaborWidth, GaborHeight];
-            KernelImgData = new double[GaborWidth, GaborHeight];
         }
     }
 

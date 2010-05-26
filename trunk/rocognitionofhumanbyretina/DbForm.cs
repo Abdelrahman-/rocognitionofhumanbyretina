@@ -10,11 +10,9 @@ using rocognitionofhumanbyretina.DB;
 using rocognitionofhumanbyretina.common;
 using rocognitionofhumanbyretina.common.enums;
 using System.IO;
-using System.Drawing;
 using System.Drawing.Imaging;
 using System.Data.Linq;
 using System.Data.Linq.Mapping;
-using System.Linq;
 
 
 namespace rocognitionofhumanbyretina
@@ -22,6 +20,8 @@ namespace rocognitionofhumanbyretina
     public partial class DbForm : Form
     {
         private List<Image> SelectedForCompareItems=new List<Image>();
+
+        private BitmapService bmpService = new BitmapService();
 
         public DbForm()
         {
@@ -221,28 +221,23 @@ namespace rocognitionofhumanbyretina
             gabor2d.CalculateKernel2D(gabor2d.Image, 80, 5, imageSecond.Width, imageSecond.Height);
             //GaborResult gabor2dResult = gabor2d.GaborTransform(new Bitmap(imageSecond));
 
-            Image gabor1dRe=new Bitmap(gabor1d.GaborRealCodeArray1D);
-            Image gabor1dIm = new Bitmap(gabor1d.GaborImCodeArray1D);
-            Image gabor2dRe = new Bitmap(gabor2d.GaborRealCodeArray2D);
-            Image gabor2dIm = new Bitmap(gabor2d.GaborImCodeArray2D);
+            Image gabor1dRe=new Bitmap(gabor1d.GaborRealCodeArray);
+            Image gabor1dIm = new Bitmap(gabor1d.GaborImCodeArray);
+            Image gabor2dRe = new Bitmap(gabor2d.GaborRealCodeArray);
+            Image gabor2dIm = new Bitmap(gabor2d.GaborImCodeArray);
 
 
-            MemoryStream msOne = new MemoryStream();
-            byte[] bArrOne = null;
-            gabor1dRe.Save(msOne, ImageFormat.Jpeg);
-            bArrOne = msOne.GetBuffer();
-            MemoryStream msTwo = new MemoryStream();
-            byte[] bArrTwo = null;
-            gabor1dIm.Save(msTwo, ImageFormat.Jpeg);
-            bArrTwo = msTwo.GetBuffer();
-            MemoryStream msThree = new MemoryStream();
-            byte[] bArrThree = null;
-            gabor2dRe.Save(msThree, ImageFormat.Jpeg);
-            bArrThree = msThree.GetBuffer();
-            MemoryStream msFour = new MemoryStream();
-            byte[] bArrFour = null;
-            gabor2dIm.Save(msFour, ImageFormat.Jpeg);
-            bArrFour = msFour.GetBuffer();
+
+            
+            byte[] bArrOne = bmpService.bmpToByte(gabor1dRe);
+            
+            
+            byte[] bArrTwo = bmpService.bmpToByte(gabor1dIm);
+
+            byte[] bArrThree = bmpService.bmpToByte(gabor2dRe);
+
+            byte[] bArrFour = bmpService.bmpToByte(gabor2dIm);
+            
             con.addNewHumanInfoToDB(Int32.Parse(comboBox1.Text), imageFirst, imageSecond, bArrOne, bArrTwo,
                             bArrThree, bArrFour, eyeType.ToString());
 
