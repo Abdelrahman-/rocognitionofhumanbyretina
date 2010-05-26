@@ -36,8 +36,8 @@ class Gabor1D : Gabor
                     {
                         if ((k > 0) && (im.GetLength(0) > k))
                         {
-                            real = KernelRealPart1D(x, Orientation, Frequency);
-                            img = KernelImgPart1D(x, Orientation, Frequency);
+                            real = KernelRealPart1D(k, Orientation, Frequency);
+                            img = KernelImgPart1D(k, Orientation, Frequency);
 
                             integralReal = integralReal + im[k, i] * real;
                             integralIma = integralIma + im[k, i] * img;
