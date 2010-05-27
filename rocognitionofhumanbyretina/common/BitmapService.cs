@@ -73,7 +73,8 @@ namespace rocognitionofhumanbyretina.common
                     min = sum;
             }
 
-            return (min / (maxX * maxY));
+            //return (min / (maxX * maxY));
+            return min;
         }
     }
 }

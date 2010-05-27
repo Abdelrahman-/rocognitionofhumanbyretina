@@ -83,7 +83,7 @@ namespace rocognitionofhumanbyretina
                     listView1.Items.Clear();
                     listView1.LargeImageList = imageList1;
                     listView1.BeginUpdate();
-
+                    
                     for (int i = 0; i < human.Peoples.Count; i++)
                     {
                         imageBytes = (byte[])human.Peoples[i].ImageFull;
@@ -94,6 +94,7 @@ namespace rocognitionofhumanbyretina
                         ListViewItem listViewItem = new ListViewItem("Eye Picture: " + human.Peoples[i].EyeType + "\n ", i);
                         listViewItem.Tag = human.Peoples[i].id;
                         listView1.Items.Add(listViewItem);
+                        
                     }
 
                     listView1.EndUpdate();
@@ -105,17 +106,18 @@ namespace rocognitionofhumanbyretina
                     listView2.Items.Clear();
                     listView2.LargeImageList = imageList2;
                     listView2.BeginUpdate();
-
+                    comboBox3.Items.Clear();
                     for (int i = 0; i < human.Peoples.Count; i++)
                     {
                         imageBytes = (byte[])human.Peoples[i].ImagePart;
                         tempImage = bmpServ.ByteToBmp(imageBytes);
                         imageList2.Images.Add((Image)tempImage);
 
-                        ListViewItem listViewItem = new ListViewItem("Part of Eye Picture: " + human.Peoples[i].EyeType + "\n ", i);
+                        ListViewItem listViewItem = new ListViewItem("Part of Eye Picture: " + human.Peoples[i].EyeType + "\n " + "Image ID: " + human.Peoples[i].id.ToString(), i);
                         listViewItem.Tag = human.Peoples[i].id;
                         listViewItem.Tag = human.Peoples[i].id;
                         listView2.Items.Add(listViewItem);
+                        comboBox3.Items.Add(human.Peoples[i].id.ToString());
                     }
 
                     listView2.EndUpdate();
@@ -354,6 +356,18 @@ namespace rocognitionofhumanbyretina
                     
                     icf.GetSecondListBox.Items[i] = icf.GetSecondListBox.Items[i] + ((SelectedForCompareItems[1] as Bitmap).GetPixel(i, j).R / 255).ToString() + " ";
                 }
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.Text.Length > 0)
+            {
+                DataContext db = new DataContext(System.Windows.Forms.Application.StartupPath + "\\resources\\PeopleDB.mdf");
+
+                Table<Peoples> peo = db.GetTable<Peoples>();
+                db.ExecuteCommand("delete from Peoples where id=" + comboBox3.Text);
+                db.SubmitChanges();
             }
         }
 
