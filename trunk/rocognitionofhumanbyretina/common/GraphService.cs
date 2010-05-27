@@ -11,12 +11,12 @@ namespace rocognitionofhumanbyretina.common
     {
         private static List<LineItem> linesList = new List<LineItem>();
 
-        public void addLine(String lineName,Point[] points, Color color)
+        public void addLine(String lineName, PointD[] points, Color color)
         {
             PointPairList list = new PointPairList();
 
             // Заполняем список точек
-            foreach (Point p in points)
+            foreach (PointD p in points)
             {
                 // добавим в список точку
                 list.Add(p.X,p.Y);
