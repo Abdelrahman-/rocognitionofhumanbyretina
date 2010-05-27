@@ -30,7 +30,7 @@ namespace rocognitionofhumanbyretina
 
         private void closeButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
 
         private void DbForm_Load(object sender, EventArgs e)
@@ -220,7 +220,7 @@ namespace rocognitionofhumanbyretina
             Gabor1D gabor1d = new Gabor1D(imageSecond as Bitmap);
             Gabor2D gabor2d = new Gabor2D(imageSecond as Bitmap);
             gabor1d.CalculateKernel1D(gabor1d.Image, 15, 1, imageSecond.Width, imageSecond.Height);
-            gabor2d.CalculateKernel2D(gabor2d.Image, 10, 5, imageSecond.Width, imageSecond.Height);
+            gabor2d.CalculateKernel2D(gabor2d.Image,0, 0, imageSecond.Width, imageSecond.Height);//10 5
             //GaborResult gabor2dResult = gabor2d.GaborTransform(new Bitmap(imageSecond));
 
             Image gabor1dRe=new Bitmap(gabor1d.GaborRealCodeArray);
@@ -331,7 +331,8 @@ namespace rocognitionofhumanbyretina
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Выберите пожалуйста шаблон сперва, затем второй - и нажмите кнопку 'Сравнить изображения'!");
+                //MessageBox.Show("Выберите пожалуйста шаблон сперва, затем второй - и нажмите кнопку 'Сравнить изображения'!");
+                MessageBox.Show(exc.Message);
             }
         }
 

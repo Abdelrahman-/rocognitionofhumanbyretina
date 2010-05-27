@@ -50,7 +50,9 @@ namespace rocognitionofhumanbyretina
             foreach (LineItem line in graphService.LinesList)
             {
                 // Создадим кривые
-                pane.AddCurve(line.Label.Text, line.Points, line.Color, line.Symbol.Type);
+                //pane.AddCurve(line.Label.Text, line.Points, line.Color, line.Symbol.Type);
+                
+                pane.AddStick(line.Label.Text, line.Points, line.Color);
             }
             // Вызываем метод AxisChange (), чтобы обновить данные об осях.
             // В противном случае на рисунке будет показана только часть графика,
@@ -71,31 +73,31 @@ namespace rocognitionofhumanbyretina
             Connector cn = new Connector();
             List<Peoples> peoples = cn.GetAllImages();
 
-            List<Point> my1d = new List<Point>();
-            List<Point> dontMy1d = new List<Point>();
+            List<PointD> my1d = new List<PointD>();
+            List<PointD> dontMy1d = new List<PointD>();
 
-            List<Point> my2d = new List<Point>();
-            List<Point> dontMy2d = new List<Point>();
-            List<Int32>[] list1 = new List<Int32>[100000];
-            List<Int32>[] list2 = new List<Int32>[100000];
-            int _1d,_2d;
-            int[] arr = new int[1000000];
-            int[] arr1 = new int[1000000];
+            List<PointD> my2d = new List<PointD>();
+            List<PointD> dontMy2d = new List<PointD>();
+            List<Double>[] list1 = new List<Double>[100000];
+            List<Double>[] list2 = new List<Double>[100000];
+            Double _1d, _2d;
+            Double[] arr = new Double[1000000];
+            Double[] arr1 = new Double[1000000];
 
             listBox1.Items.Clear();
             listBox2.Items.Clear();
-            listBox3.Items.Clear();
-            listBox4.Items.Clear();
+///            listBox3.Items.Clear();
+///            listBox4.Items.Clear();
 
 
-            for (int x = 0, i = 0; i <100000; i++)
+            for (int i = 0; i <100000; i++)
             {
-                    list1[i] = new List<Int32>();
-                    list2[i] = new List<Int32>();
+                list1[i] = new List<Double>();
+                list2[i] = new List<Double>();
             }
 
-            Int32[,] temp = new Int32[peoples.Count - 1, peoples.Count];
-            Int32[,] temp1= new Int32[peoples.Count - 1, peoples.Count];
+            Double[,] temp = new Double[peoples.Count - 1, peoples.Count];
+            Double[,] temp1 = new Double[peoples.Count - 1, peoples.Count];
 
 
             for (int x=0,i = 0; i < peoples.Count - 1; i++)
@@ -103,124 +105,43 @@ namespace rocognitionofhumanbyretina
                 for (int j = i + 1; j < peoples.Count; j++,x++)
                 {
 
-                    _1d=((int)bmpService.HD(peoples[i].Token1D_AttrOne, peoples[j].Token1D_AttrOne) +
-                                (int)bmpService.HD(peoples[i].Token1D_AttrTwo, peoples[j].Token1D_AttrTwo));
-                    _2d=((int)bmpService.HD(peoples[i].Token2D_AttrOne, peoples[j].Token2D_AttrOne) +
-                                        (int)bmpService.HD(peoples[i].Token2D_AttrTwo, peoples[j].Token2D_AttrTwo));
+                    _1d = ((Double)bmpService.HD(peoples[i].Token1D_AttrOne, peoples[j].Token1D_AttrOne) +
+                                (Double)bmpService.HD(peoples[i].Token1D_AttrTwo, peoples[j].Token1D_AttrTwo));
+                    _2d = ((Double)bmpService.HD(peoples[i].Token2D_AttrOne, peoples[j].Token2D_AttrOne) +
+                                        (Double)bmpService.HD(peoples[i].Token2D_AttrTwo, peoples[j].Token2D_AttrTwo));
                     temp[i, j] = _1d;
                     temp1[i, j] = _2d;
 
-                    list1[_1d].Add(1);
-                    list2[_2d].Add(1);
-
-                    listBox1.Items.Add("Count= " + list1[_1d].Count.ToString()+"Value= "+_1d.ToString());
-                    listBox2.Items.Add("Count= " + list2[_2d].Count.ToString() + "Value= " + _2d.ToString());
-
-
-                    //if (peoples[i].HumanId == peoples[j].HumanId && peoples[i].EyeType == peoples[j].EyeType)
-                    //{
-
-                    //    my1d.Add(new Point(_1d,list1[_1d].Count()));
-                    //    my2d.Add(new Point(_2d,list2[_2d].Count()));
-                    //}
-                    //else
-                    //{
-                    //    dontMy1d.Add(new Point(_1d,
-                    //        list1[_1d].Count()));
-                    //    dontMy2d.Add(new Point(_2d,
-                    //        list2[_2d].Count()));
-                    //}
-
-
-
-                    //if ((int)bmpService.HD(peoples[i].Token1D_AttrOne, peoples[j].Token1D_AttrOne) +
-                      //              (int)bmpService.HD(peoples[i].Token1D_AttrTwo, peoples[j].Token1D_AttrTwo) == 
-                        //            (int)bmpService.HD(peoples[k].Token1D_AttrOne, peoples[l].Token1D_AttrOne) +
-                          //      (int)bmpService.HD(peoples[k].Token1D_AttrTwo, peoples[l].Token1D_AttrTwo))
-                    /*for (int k = 0; k < peoples.Count - 1; k++)
-                    {
-                        for(int l=0;l<peoples.Count;l++)
-                        {
-                            if ((int)bmpService.HD(peoples[i].Token1D_AttrOne, peoples[j].Token1D_AttrOne) +
-                                    (int)bmpService.HD(peoples[i].Token1D_AttrTwo, peoples[j].Token1D_AttrTwo) == 
-                                    (int)bmpService.HD(peoples[k].Token1D_AttrOne, peoples[l].Token1D_AttrOne) +
-                                (int)bmpService.HD(peoples[k].Token1D_AttrTwo, peoples[l].Token1D_AttrTwo))
-
-                        arr[(int)bmpService.HD(peoples[i].Token1D_AttrOne, peoples[j].Token1D_AttrOne) +
-                                (int)bmpService.HD(peoples[i].Token1D_AttrTwo, peoples[j].Token1D_AttrTwo)]++;
-                        }
-                    }*/
+                    list1[(int)_1d].Add(1);
+                    list2[(int)_2d].Add(1);
                 }
             }
 
-
-            /*for (int i = 0; i < peoples.Count - 1; i++)
-            {
-                for (int j = i + 1; j < peoples.Count; j++)
-                {
-                    for (int k = 0; k < peoples.Count - 1; k++)
-                    {
-                        for (int l = 0; l < peoples.Count; l++)
-                        {
-                            if ((int)bmpService.HD(peoples[i].Token2D_AttrOne, peoples[j].Token2D_AttrOne) +
-                                    (int)bmpService.HD(peoples[i].Token2D_AttrTwo, peoples[j].Token2D_AttrTwo) ==
-                                    (int)bmpService.HD(peoples[k].Token2D_AttrOne, peoples[l].Token2D_AttrOne) +
-                                (int)bmpService.HD(peoples[k].Token2D_AttrTwo, peoples[l].Token2D_AttrTwo))
-
-                                arr[(int)bmpService.HD(peoples[i].Token2D_AttrOne, peoples[j].Token2D_AttrOne) +
-                                        (int)bmpService.HD(peoples[i].Token2D_AttrTwo, peoples[j].Token2D_AttrTwo)]++;
-                        }
-                    }
-                }
-            }*/
-
-            /*for (int i = 0; i < peoples.Count - 1; i++)
-            {
-                for (int j = i + 1; j < peoples.Count; j++)
-                {
-                    if (peoples[i].HumanId == peoples[j].HumanId && peoples[i].EyeType == peoples[j].EyeType)
-                    {
-                        
-                        my1d.Add(new Point((int)bmpService.HD(peoples[i].Token1D_AttrOne, peoples[j].Token1D_AttrOne) +
-                            (int)bmpService.HD(peoples[i].Token1D_AttrTwo, peoples[j].Token1D_AttrTwo),
-                            arr[(int)bmpService.HD(peoples[i].Token1D_AttrOne, peoples[j].Token1D_AttrOne) +
-                                (int)bmpService.HD(peoples[i].Token1D_AttrTwo, peoples[j].Token1D_AttrTwo)]));
-                        my2d.Add(new Point((int)bmpService.HD(peoples[i].Token2D_AttrOne, peoples[j].Token2D_AttrOne) +
-                            (int)bmpService.HD(peoples[i].Token2D_AttrTwo, peoples[j].Token2D_AttrTwo),
-                            arr1[(int)bmpService.HD(peoples[i].Token2D_AttrOne, peoples[j].Token2D_AttrOne) +
-                                (int)bmpService.HD(peoples[i].Token2D_AttrTwo, peoples[j].Token2D_AttrTwo)]));
-                    }
-                    else
-                    {
-                        dontMy1d.Add(new Point((int)bmpService.HD(peoples[i].Token1D_AttrOne, peoples[j].Token1D_AttrOne) +
-                            (int)bmpService.HD(peoples[i].Token1D_AttrTwo, peoples[j].Token1D_AttrTwo),
-                            arr[(int)bmpService.HD(peoples[i].Token1D_AttrOne, peoples[j].Token1D_AttrOne) +
-                                (int)bmpService.HD(peoples[i].Token1D_AttrTwo, peoples[j].Token1D_AttrTwo)]));
-                        dontMy2d.Add(new Point((int)bmpService.HD(peoples[i].Token2D_AttrOne, peoples[j].Token2D_AttrOne) +
-                            (int)bmpService.HD(peoples[i].Token2D_AttrTwo, peoples[j].Token2D_AttrTwo),
-                            arr1[(int)bmpService.HD(peoples[i].Token2D_AttrOne, peoples[j].Token2D_AttrOne) +
-                                (int)bmpService.HD(peoples[i].Token2D_AttrTwo, peoples[j].Token2D_AttrTwo)]));
-                    }
-                }
-            }*/
 
             for (int x = 0, i = 0; i < peoples.Count - 1; i++)
             {
                 for (int j = i + 1; j < peoples.Count; j++, x++)
                 {
 
+
+
                     if (peoples[i].HumanId == peoples[j].HumanId && peoples[i].EyeType == peoples[j].EyeType)
                     {
+                        listBox1.Items.Add("RED Count= " + list1[(int)temp[i, j]].Count.ToString() + "Value= " + temp[i, j].ToString());
+                        listBox2.Items.Add("BLUE Count= " + list2[(int)temp1[i, j]].Count.ToString() + "Value= " + temp1[i, j].ToString());
 
-                        my1d.Add(new Point(temp[i, j], list1[temp[i, j]].Count()));
-                        my2d.Add(new Point(temp1[i, j], list2[temp1[i, j]].Count()));
+                        my1d.Add(new PointD(temp[i, j], list1[(int)temp[i, j]].Count()));
+                        my2d.Add(new PointD(temp1[i, j], list2[(int)temp1[i, j]].Count()));
                     }
                     else
                     {
-                        dontMy1d.Add(new Point(temp[i, j],
-                            list1[temp[i, j]].Count()));
-                        dontMy2d.Add(new Point(temp1[i, j],
-                            list2[temp1[i, j]].Count()));
+                        listBox3.Items.Add("GREEN Count= " + list1[(int)temp[i, j]].Count.ToString() + "Value= " + temp[i, j].ToString());
+                        listBox4.Items.Add("BLACK Count= " + list2[(int)temp1[i, j]].Count.ToString() + "Value= " + temp1[i, j].ToString());
+
+                        dontMy1d.Add(new PointD(temp[i, j],
+                            list1[(int)temp[i, j]].Count()));
+                        dontMy2d.Add(new PointD(temp1[i, j],
+                            list2[(int)temp1[i, j]].Count()));
                     }
                 }
             }
@@ -229,7 +150,7 @@ namespace rocognitionofhumanbyretina
 
             graphService.addLine("1d their", my1d.ToArray(), Color.Red);
             graphService.addLine("1d zhuchie", dontMy1d.ToArray(), Color.Blue);
-
+            
             graphService.addLine("2d their", my2d.ToArray(), Color.Green);
             graphService.addLine("2d zhuchie", dontMy2d.ToArray(), Color.Black);
         }

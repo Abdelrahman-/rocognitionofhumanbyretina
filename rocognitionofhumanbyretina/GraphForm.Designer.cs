@@ -80,28 +80,26 @@
             // listBox3
             // 
             this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(1012, 0);
+            this.listBox3.Location = new System.Drawing.Point(1196, 27);
             this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(89, 355);
-            this.listBox3.TabIndex = 4;
-            this.listBox3.SelectedIndexChanged += new System.EventHandler(this.listBox3_SelectedIndexChanged);
+            this.listBox3.Size = new System.Drawing.Size(173, 355);
+            this.listBox3.TabIndex = 5;
             // 
             // listBox4
             // 
             this.listBox4.FormattingEnabled = true;
-            this.listBox4.Location = new System.Drawing.Point(1051, 27);
+            this.listBox4.Location = new System.Drawing.Point(1004, 27);
             this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(89, 355);
-            this.listBox4.TabIndex = 5;
-            this.listBox4.SelectedIndexChanged += new System.EventHandler(this.listBox4_SelectedIndexChanged);
+            this.listBox4.Size = new System.Drawing.Size(186, 355);
+            this.listBox4.TabIndex = 4;
             // 
             // GraphForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1152, 446);
-            this.Controls.Add(this.listBox4);
+            this.ClientSize = new System.Drawing.Size(1399, 457);
             this.Controls.Add(this.listBox3);
+            this.Controls.Add(this.listBox4);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.hideButton);
