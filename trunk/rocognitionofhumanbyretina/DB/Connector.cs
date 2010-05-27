@@ -42,6 +42,12 @@ namespace rocognitionofhumanbyretina.DB
             return tempPeoplesStorage;
         }
 
+
+        public void DeletePeoplesInfoByID(int id)
+        {
+
+        }
+
         public Human GetHumansInfo(int id)
         {
 
