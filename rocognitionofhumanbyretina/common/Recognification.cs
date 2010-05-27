@@ -25,7 +25,7 @@ namespace rocognitionofhumanbyretina.common
             if (type == GaborTypes.WAVELET1D)
             {
                 Gabor1D gabor = new Gabor1D(testBmp);
-                gabor.CalculateKernel1D(gabor.Image, 45, 10, testBmp.Width, testBmp.Height);
+                gabor.CalculateKernel1D(gabor.Image, 15, 1, testBmp.Width, testBmp.Height);
 
                 for (int i = 0; i < peoples.Count; i++)
                 {
@@ -40,7 +40,7 @@ namespace rocognitionofhumanbyretina.common
             else
             {
                 Gabor2D gabor = new Gabor2D(testBmp);
-                gabor.CalculateKernel2D(gabor.Image, 45, 10, testBmp.Width, testBmp.Height);
+                gabor.CalculateKernel2D(gabor.Image, 0, 0, testBmp.Width, testBmp.Height);
 
                 for (int i = 0; i < peoples.Count; i++)
                 {
