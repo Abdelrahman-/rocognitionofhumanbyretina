@@ -14,7 +14,8 @@ namespace rocognitionofhumanbyretina
 {
     public partial class GraphForm : Form
     {
-        private GraphService graphService = new GraphService();
+        private GraphService graphService1d = new GraphService();
+        private GraphService graphService2d = new GraphService();
         private BitmapService bmpService = new BitmapService();
 
         public GraphForm()
@@ -42,25 +43,43 @@ namespace rocognitionofhumanbyretina
         private void DrawGraphs()
         {
             // Получим панель для рисования
-            GraphPane pane = zedGraphControl1.GraphPane;
-
+            GraphPane pane1d = zedGraphControl1.GraphPane;
+            GraphPane pane2d = zedGraphControl2.GraphPane;
             // Очистим список кривых на тот случай, если до этого сигналы уже были нарисованы
-            pane.CurveList.Clear();
+            pane1d.CurveList.Clear();
+            pane2d.CurveList.Clear();
 
-            foreach (LineItem line in graphService.LinesList)
+            pane1d.Chart.Fill = new Fill(Color.White, Color.LightGoldenrodYellow, 45F);
+            pane2d.Chart.Fill = new Fill(Color.White, Color.LightGoldenrodYellow, 45F);
+
+            foreach (LineItem line in graphService1d.LinesList)
             {
                 // Создадим кривые
                 //pane.AddCurve(line.Label.Text, line.Points, line.Color, line.Symbol.Type);
-                
-                pane.AddStick(line.Label.Text, line.Points, line.Color);
+
+                pane1d.AddCurve(line.Label.Text, line.Points, line.Color);
             }
+
+            foreach (LineItem line in graphService2d.LinesList)
+            {
+                // Создадим кривые
+                //pane.AddCurve(line.Label.Text, line.Points, line.Color, line.Symbol.Type);
+
+                pane2d.AddCurve(line.Label.Text, line.Points, line.Color);
+            }
+            (pane1d.CurveList[0] as LineItem).Line.Fill = new Fill(Color.White, Color.Red, 45.0f);
+            (pane1d.CurveList[1] as LineItem).Line.Fill = new Fill(Color.White, Color.Blue, 45.0f);
+            (pane2d.CurveList[0] as LineItem).Line.Fill = new Fill(Color.White, Color.Green, 45.0f);
+            (pane2d.CurveList[1] as LineItem).Line.Fill = new Fill(Color.White, Color.Black, 45.0f);
             // Вызываем метод AxisChange (), чтобы обновить данные об осях.
             // В противном случае на рисунке будет показана только часть графика,
             // которая умещается в интервалы по осям, установленные по умолчанию
             zedGraphControl1.AxisChange();
+            zedGraphControl2.AxisChange();
 
             // Обновляем график
             zedGraphControl1.Invalidate();
+            zedGraphControl2.Invalidate();
         }
 
    
@@ -123,13 +142,11 @@ namespace rocognitionofhumanbyretina
                 for (int j = i + 1; j < peoples.Count; j++, x++)
                 {
 
-
-
                     if (peoples[i].HumanId == peoples[j].HumanId && peoples[i].EyeType == peoples[j].EyeType)
                     {
                         listBox1.Items.Add("RED Count= " + list1[(int)temp[i, j]].Count.ToString() + "Value= " + temp[i, j].ToString());
                         listBox2.Items.Add("BLUE Count= " + list2[(int)temp1[i, j]].Count.ToString() + "Value= " + temp1[i, j].ToString());
-
+                        
                         my1d.Add(new PointD(temp[i, j], list1[(int)temp[i, j]].Count()));
                         my2d.Add(new PointD(temp1[i, j], list2[(int)temp1[i, j]].Count()));
                     }
@@ -145,14 +162,12 @@ namespace rocognitionofhumanbyretina
                     }
                 }
             }
-
-
-
-            graphService.addLine("1d their", my1d.ToArray(), Color.Red);
-            graphService.addLine("1d zhuchie", dontMy1d.ToArray(), Color.Blue);
             
-            graphService.addLine("2d their", my2d.ToArray(), Color.Green);
-            graphService.addLine("2d zhuchie", dontMy2d.ToArray(), Color.Black);
+            graphService1d.addLine("1d свои", my1d.Distinct().OrderBy(x=>x.X).ToArray(), Color.Red);
+            graphService2d.addLine("2d свои", my2d.Distinct().OrderBy(x => x.X).ToArray(), Color.Blue);
+
+            graphService1d.addLine("1d чужие", dontMy1d.Distinct().OrderBy(x => x.X).ToArray(), Color.Green);
+            graphService2d.addLine("2d чужие", dontMy2d.Distinct().OrderBy(x => x.X).ToArray(), Color.Black);
         }
 
         private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
