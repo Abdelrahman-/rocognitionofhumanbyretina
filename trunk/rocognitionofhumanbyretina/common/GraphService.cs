@@ -9,7 +9,7 @@ namespace rocognitionofhumanbyretina.common
 {
     class GraphService
     {
-        private static List<LineItem> linesList = new List<LineItem>();
+        private List<LineItem> linesList = new List<LineItem>();
 
         public void addLine(String lineName, PointD[] points, Color color)
         {
@@ -22,7 +22,8 @@ namespace rocognitionofhumanbyretina.common
                 list.Add(p.X,p.Y);
             }
 
-            LineItem line = new LineItem(lineName,list,color,SymbolType.None);
+            LineItem line = new LineItem(lineName, list, color, SymbolType.None);
+            //line.Line.Fill = new Fill(Color.White, color, 45F);
             linesList.Add(line);
         }
 

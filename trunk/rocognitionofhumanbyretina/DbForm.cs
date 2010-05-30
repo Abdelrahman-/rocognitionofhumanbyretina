@@ -136,10 +136,6 @@ namespace rocognitionofhumanbyretina
                 where cust.HumanId == Int32.Parse(dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex-1].Tag.ToString())
                 select cust;
 
-                //foreach (Peoples cust in custQuery)
-                //{
-                //    peo.DeleteOnSubmit(cust);
-                //}
                 db.ExecuteCommand("delete from Peoples where Peoples.HumanID=" + dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex - 1].Tag.ToString());
                 db.SubmitChanges();
 
@@ -219,8 +215,12 @@ namespace rocognitionofhumanbyretina
                 eyeType = EyeTypes.RIGHT;
             Gabor1D gabor1d = new Gabor1D(imageSecond as Bitmap);
             Gabor2D gabor2d = new Gabor2D(imageSecond as Bitmap);
-            gabor1d.CalculateKernel1D(gabor1d.Image, 15, 1, imageSecond.Width, imageSecond.Height);
-            gabor2d.CalculateKernel2D(gabor2d.Image,0, 0, imageSecond.Width, imageSecond.Height);//10 5
+            gabor1d.CalculateKernel1D(gabor1d.Image, 45, 32, imageSecond.Width, imageSecond.Height);
+            gabor2d.CalculateKernel2D(gabor2d.Image,45, 32, imageSecond.Width, imageSecond.Height);//10 5
+            
+            //1 1
+            //2 3
+            
             //GaborResult gabor2dResult = gabor2d.GaborTransform(new Bitmap(imageSecond));
 
             Image gabor1dRe=new Bitmap(gabor1d.GaborRealCodeArray);
@@ -345,6 +345,7 @@ namespace rocognitionofhumanbyretina
 
             icf.GetFirstListBox.Items.Clear();
             icf.GetSecondListBox.Items.Clear();
+            int differences=0;
             for (int i = 0; i < 250; i++)
             {
                 icf.GetFirstListBox.Items.Add("");
@@ -356,8 +357,11 @@ namespace rocognitionofhumanbyretina
 
                     
                     icf.GetSecondListBox.Items[i] = icf.GetSecondListBox.Items[i] + ((SelectedForCompareItems[1] as Bitmap).GetPixel(i, j).R / 255).ToString() + " ";
+                    if (((SelectedForCompareItems[0] as Bitmap).GetPixel(i, j).R / 255) != ((SelectedForCompareItems[1] as Bitmap).GetPixel(i, j).R / 255))
+                    differences++;
                 }
             }
+            icf.Text=icf.Text+" "+differences+"diff was found";
         }
 
         private void button5_Click(object sender, EventArgs e)

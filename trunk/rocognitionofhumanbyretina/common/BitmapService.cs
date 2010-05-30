@@ -21,8 +21,10 @@ namespace rocognitionofhumanbyretina.common
                 {
                     if (imgByteArray[x,y]==0)
                         bmp.SetPixel(x,y,Color.FromArgb(0,0,0));
+                        //bmp.SetPixel(x, y, Color.FromArgb(imgByteArray[x, y], imgByteArray[x, y], imgByteArray[x, y]));
                     else
                         bmp.SetPixel(x,y,Color.FromArgb(255,255,255));
+                        //bmp.SetPixel(x, y, Color.FromArgb(imgByteArray[x, y], imgByteArray[x, y], imgByteArray[x, y]));
                 }
             return bmp;
         }

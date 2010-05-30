@@ -30,7 +30,7 @@ class Gabor1D : Gabor
                 integralReal = 0;
                 integralIma = 0;
 
-                for (k = j - 1; k < j + 2; k++)
+                for (k = j - 3; k < j + 3; k++)
                 {
                     try
                     {
@@ -76,7 +76,17 @@ class Gabor1D : Gabor
 
     private double KernelRealPart1D(int x, int Orientation, int Frequency)
     {
-        double U, V;
+        double gamma = 4.8f;
+        double lambda = 2.3f;
+        double sigma = 9.42f;
+        double F = 0.1f;
+        double x_ = x * Math.Cos(Orientation) + 0;
+        double y_ = -x * Math.Sin(Orientation) + 0;
+        double temp1 = 1 / (2 * Math.PI * sigma * sigma) * Math.Exp(-(x_ * x_ + y_ * y_) / (2 * sigma * sigma));
+        double temp2 = Math.Cos(2 * Math.PI * x_ * F);
+        return Frequency * temp1 * temp2;
+
+        /*double U, V;
         double Sigma, Kv, Qu;
         double tmp1, tmp2;
 
@@ -89,12 +99,23 @@ class Gabor1D : Gabor
         tmp1 = Math.Exp(-(Kv * Kv * (x * x) / (2 * Sigma)));
         tmp2 = Math.Cos(Kv * Math.Cos(Qu) * x - Math.Exp(-(Sigma / 2)));
 
-        return tmp1 * tmp2 * Kv * Kv / Sigma;
+        return tmp1 * tmp2 * Kv * Kv / Sigma;*/
     }
 
     private double KernelImgPart1D(int x, int Orientation, int Frequency)
     {
-        double U, V;
+
+        double gamma = 4.8f;
+        double lambda = 2.3f;
+        double sigma = 9.42f;
+        double F = 0.1f;
+        double x_ = x * Math.Cos(Orientation) + 0;
+        double y_ = -x * Math.Sin(Orientation) + 0;
+        double temp1 = 1 / (2 * Math.PI * sigma * sigma) * Math.Exp(-(x_ * x_ + y_ * y_) / (2 * sigma * sigma));
+        double temp2 = Math.Sin(2 * Math.PI * x_ * F);
+        return Frequency * temp1 * temp2;
+
+        /*double U, V;
         double Sigma, Kv, Qu;
         double tmp1, tmp2;
 
@@ -107,6 +128,6 @@ class Gabor1D : Gabor
         tmp1 = Math.Exp(-(Kv * Kv * (x * x) / (2 * Sigma)));
         tmp2 = Math.Sin(Kv * Math.Cos(Qu) * x - Math.Exp(-(Sigma / 2)));
 
-        return tmp1 * tmp2 * Kv * Kv / Sigma;
+        return tmp1 * tmp2 * Kv * Kv / Sigma;*/
     }
 }
