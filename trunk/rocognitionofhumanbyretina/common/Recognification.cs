@@ -25,12 +25,14 @@ namespace rocognitionofhumanbyretina.common
             if (type == GaborTypes.WAVELET1D)
             {
                 Gabor1D gabor = new Gabor1D(testBmp);
-                gabor.CalculateKernel1D(gabor.Image, 15, 1, testBmp.Width, testBmp.Height);
+                gabor.CalculateKernel1D(gabor.Image, 45, 32, testBmp.Width, testBmp.Height);
 
                 for (int i = 0; i < peoples.Count; i++)
                 {
-                    double lenght = bmpService.HD(new Bitmap(gabor.GaborRealCodeArray), bmpService.ByteToBmp(peoples[i].Token1D_AttrOne));
-                    if (lenght < min)
+                    double lenght = 
+                        bmpService.HD(new Bitmap(gabor.GaborRealCodeArray), bmpService.ByteToBmp(peoples[i].Token1D_AttrOne))+
+                        bmpService.HD(new Bitmap(gabor.GaborImCodeArray), bmpService.ByteToBmp(peoples[i].Token1D_AttrTwo));
+                    if (lenght < min && lenght < Threshold.Threshold1d)
                     {
                         min = lenght;
                         index = i;
@@ -40,21 +42,24 @@ namespace rocognitionofhumanbyretina.common
             else
             {
                 Gabor2D gabor = new Gabor2D(testBmp);
-                gabor.CalculateKernel2D(gabor.Image, 0, 0, testBmp.Width, testBmp.Height);
+                gabor.CalculateKernel2D(gabor.Image, 45, 32, testBmp.Width, testBmp.Height);
 
                 for (int i = 0; i < peoples.Count; i++)
                 {
-                    double lenght = bmpService.HD(new Bitmap(gabor.GaborRealCodeArray), bmpService.ByteToBmp(peoples[i].Token2D_AttrOne));
-                    if (lenght < min)
+                    double lenght = 
+                        bmpService.HD(new Bitmap(gabor.GaborRealCodeArray), bmpService.ByteToBmp(peoples[i].Token2D_AttrOne))+
+                        bmpService.HD(new Bitmap(gabor.GaborImCodeArray), bmpService.ByteToBmp(peoples[i].Token2D_AttrTwo));
+                    if (lenght < min && lenght < Threshold.Threshold2d)
                     {
                         min = lenght;
                         index = i;
                     }
                 }
             }
-
-
-            return peoples[index];
+            if (index == -1)
+                return null;
+            else
+                return peoples[index];
         }
     }
 }
