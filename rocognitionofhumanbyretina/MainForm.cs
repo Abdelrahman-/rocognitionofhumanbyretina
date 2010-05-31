@@ -147,14 +147,23 @@ namespace rocognitionofhumanbyretina
                 MessageBox.Show("Не выбран шаблон!");
             }
             else
-            {
+            {               
                 Recognification recognif = new Recognification();
                 Peoples people = recognif.start(type, new Bitmap(pictureBoxMain.Image));
 
-                Connector cn = new Connector();
-                Human hm = cn.GetHumansInfo(people.HumanId);
+                if (people == null)
+                {
+                    MessageBox.Show("Данная сетчатка не распознана!");
+                    return;
+                }
+                else
+                {
 
-                MessageBox.Show("Наиболее вероятно, что этот глаз пренадлежит: \n" + hm.Name + " " + hm.SurName + " " + hm.SecondName);
+                    Connector cn = new Connector();
+                    Human hm = cn.GetHumansInfo(people.HumanId);
+
+                    MessageBox.Show("Наиболее вероятно, что этот глаз пренадлежит: \n" + hm.Name + " " + hm.SurName + " " + hm.SecondName);
+                }
             }
         }
     }

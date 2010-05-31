@@ -76,8 +76,8 @@ class Gabor1D : Gabor
 
     private double KernelRealPart1D(int x, int Orientation, int Frequency)
     {
-        double gamma = 4.8f;
-        double lambda = 2.3f;
+        //double gamma = 4.8f;
+        //double lambda = 2.3f;
         double sigma = 9.42f;
         double F = 0.1f;
         double x_ = x * Math.Cos(Orientation) + 0;
@@ -105,8 +105,8 @@ class Gabor1D : Gabor
     private double KernelImgPart1D(int x, int Orientation, int Frequency)
     {
 
-        double gamma = 4.8f;
-        double lambda = 2.3f;
+        //double gamma = 4.8f;
+        //double lambda = 2.3f;
         double sigma = 9.42f;
         double F = 0.1f;
         double x_ = x * Math.Cos(Orientation) + 0;
